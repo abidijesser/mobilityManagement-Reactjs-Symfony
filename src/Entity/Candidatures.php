@@ -10,14 +10,16 @@ class Candidatures
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $idEtudiant = null;
+    #[ORM\ManyToOne(targetEntity: RegistredStudents::class, inversedBy: 'candidatures')]
+    #[ORM\JoinColumn(name: 'id_etudiant', referencedColumnName: 'id', nullable: false)]
+    private ?RegistredStudents $etudiant = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $idMobilite = null;
+    #[ORM\ManyToOne(targetEntity: Mobilite::class, inversedBy: 'candidatures')]
+    #[ORM\JoinColumn(name: 'id_mobilite', referencedColumnName: 'id', nullable: false)]
+    private ?Mobilite $mobilite = null;
 
     #[ORM\Column(length: 255)]
     private ?string $idEtudiantUniversitaire = null;
@@ -60,27 +62,25 @@ class Candidatures
         return $this->id;
     }
 
-    public function getIdEtudiant(): ?string
+    public function getEtudiant(): ?RegistredStudents
     {
-        return $this->idEtudiant;
+        return $this->etudiant;
     }
 
-    public function setIdEtudiant(string $idEtudiant): static
+    public function setEtudiant(?RegistredStudents $etudiant): self
     {
-        $this->idEtudiant = $idEtudiant;
-
+        $this->etudiant = $etudiant;
         return $this;
     }
 
-    public function getIdMobilite(): ?string
+    public function getMobilite(): ?Mobilite
     {
-        return $this->idMobilite;
+        return $this->mobilite;
     }
 
-    public function setIdMobilite(string $idMobilite): static
+    public function setMobilite(?Mobilite $mobilite): self
     {
-        $this->idMobilite = $idMobilite;
-
+        $this->mobilite = $mobilite;
         return $this;
     }
 
@@ -89,10 +89,9 @@ class Candidatures
         return $this->idEtudiantUniversitaire;
     }
 
-    public function setIdEtudiantUniversitaire(string $idEtudiantUniversitaire): static
+    public function setIdEtudiantUniversitaire(string $idEtudiantUniversitaire): self
     {
         $this->idEtudiantUniversitaire = $idEtudiantUniversitaire;
-
         return $this;
     }
 
@@ -101,10 +100,9 @@ class Candidatures
         return $this->nomEtudiant;
     }
 
-    public function setNomEtudiant(string $nomEtudiant): static
+    public function setNomEtudiant(string $nomEtudiant): self
     {
         $this->nomEtudiant = $nomEtudiant;
-
         return $this;
     }
 
@@ -113,10 +111,9 @@ class Candidatures
         return $this->prenomEtudiant;
     }
 
-    public function setPrenomEtudiant(string $prenomEtudiant): static
+    public function setPrenomEtudiant(string $prenomEtudiant): self
     {
         $this->prenomEtudiant = $prenomEtudiant;
-
         return $this;
     }
 
@@ -125,10 +122,9 @@ class Candidatures
         return $this->optionn;
     }
 
-    public function setOptionn(string $optionn): static
+    public function setOptionn(string $optionn): self
     {
         $this->optionn = $optionn;
-
         return $this;
     }
 
@@ -137,10 +133,9 @@ class Candidatures
         return $this->classe;
     }
 
-    public function setClasse(string $classe): static
+    public function setClasse(string $classe): self
     {
         $this->classe = $classe;
-
         return $this;
     }
 
@@ -149,10 +144,9 @@ class Candidatures
         return $this->niveau;
     }
 
-    public function setNiveau(string $niveau): static
+    public function setNiveau(string $niveau): self
     {
         $this->niveau = $niveau;
-
         return $this;
     }
 
@@ -161,10 +155,9 @@ class Candidatures
         return $this->moyenne;
     }
 
-    public function setMoyenne(string $moyenne): static
+    public function setMoyenne(string $moyenne): self
     {
         $this->moyenne = $moyenne;
-
         return $this;
     }
 
@@ -173,10 +166,9 @@ class Candidatures
         return $this->cv;
     }
 
-    public function setCv(string $cv): static
+    public function setCv(string $cv): self
     {
         $this->cv = $cv;
-
         return $this;
     }
 
@@ -185,10 +177,9 @@ class Candidatures
         return $this->activités;
     }
 
-    public function setActivités(string $activités): static
+    public function setActivités(string $activités): self
     {
         $this->activités = $activités;
-
         return $this;
     }
 
@@ -197,10 +188,9 @@ class Candidatures
         return $this->certificats;
     }
 
-    public function setCertificats(?string $certificats): static
+    public function setCertificats(?string $certificats): self
     {
         $this->certificats = $certificats;
-
         return $this;
     }
 
@@ -209,10 +199,9 @@ class Candidatures
         return $this->langues;
     }
 
-    public function setLangues(?string $langues): static
+    public function setLangues(?string $langues): self
     {
         $this->langues = $langues;
-
         return $this;
     }
 
@@ -221,10 +210,10 @@ class Candidatures
         return $this->score;
     }
 
-    public function setScore(float $score): static
+    public function setScore(float $score): self
     {
         $this->score = $score;
-
         return $this;
     }
 }
+

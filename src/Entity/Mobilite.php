@@ -12,6 +12,44 @@ class Mobilite
     #[ORM\Column(type: 'integer')]
     private ?int $id = null;
 
+    #[ORM\OneToMany(targetEntity: Candidatures::class, mappedBy: 'mobilite')]
+    private Collection $candidatures;
+
+    public function __construct()
+    {
+        $this->candidatures = new ArrayCollection();
+    }
+
+    /**
+     * @return Collection|Candidatures[]
+     */
+    public function getCandidatures(): Collection
+    {
+        return $this->candidatures;
+    }
+
+    public function addCandidature(Candidatures $candidature): self
+    {
+        if (!$this->candidatures->contains($candidature)) {
+            $this->candidatures[] = $candidature;
+            $candidature->setMobilite($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCandidature(Candidatures $candidature): self
+    {
+        if ($this->candidatures->removeElement($candidature)) {
+            // set the owning side to null (unless already changed)
+            if ($candidature->getMobilite() === $this) {
+                $candidature->setMobilite(null);
+            }
+        }
+
+        return $this;
+    }
+
     #[ORM\Column(length: 255)]
     private ?string $nomUniversité = null;
 

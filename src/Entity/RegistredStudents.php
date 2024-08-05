@@ -13,6 +13,44 @@ class RegistredStudents
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ORM\OneToMany(targetEntity: Candidatures::class, mappedBy: 'etudiant')]
+    private Collection $candidatures;
+
+    public function __construct()
+    {
+        $this->candidatures = new ArrayCollection();
+    }
+    
+    /**
+     * @ORM\OneToMany(targetEntity=Candidatures::class, mappedBy="mobilite")
+     */
+    public function getCandidatures(): Collection
+    {
+        return $this->candidatures;
+    }
+
+    public function addCandidature(Candidatures $candidature): self
+    {
+        if (!$this->candidatures->contains($candidature)) {
+            $this->candidatures[] = $candidature;
+            $candidature->setEtudiant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCandidature(Candidatures $candidature): self
+    {
+        if ($this->candidatures->removeElement($candidature)) {
+            // set the owning side to null (unless already changed)
+            if ($candidature->getEtudiant() === $this) {
+                $candidature->setEtudiant(null);
+            }
+        }
+
+        return $this;
+    }
+
     #[ORM\Column(length: 255)]
     private ?string $nomEtudiant = null;
 
