@@ -15,10 +15,10 @@ class Mobilite
     #[ORM\OneToMany(targetEntity: Candidatures::class, mappedBy: 'mobilite')]
     private Collection $candidatures;
 
-    public function __construct()
-    {
-        $this->candidatures = new ArrayCollection();
-    }
+    // public function __construct()
+    // {
+    //     $this->candidatures = new ArrayCollection();
+    // }
 
     /**
      * @return Collection|Candidatures[]
@@ -127,12 +127,12 @@ class Mobilite
         return $this;
     }
 
-    public function getOptionn(): ?string
+    public function getOption(): ?string
     {
         return $this->optionn;
     }
 
-    public function setOptionn(string $optionn): static
+    public function setOption(string $optionn): static
     {
         $this->optionn = $optionn;
 

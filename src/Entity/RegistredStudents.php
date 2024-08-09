@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use App\Repository\RegistredStudentsRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 
 #[ORM\Entity(repositoryClass: RegistredStudentsRepository::class)]
 class RegistredStudents implements UserInterface, PasswordAuthenticatedUserInterface
@@ -144,5 +146,37 @@ class RegistredStudents implements UserInterface, PasswordAuthenticatedUserInter
         $this->motDePasseEtudiant = $motDePasse;
 
         return $this;
+    }
+
+    public function getRoles(): array
+    {
+        
+        return ['Employe'];
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->motDePasseEmploye;
+    }
+
+    public function getSalt(): ?string
+    {
+        // Not needed when using modern algorithms like bcrypt or argon2i
+        return null;
+    }
+
+    public function getUsername(): string
+    {
+        return $this->emailEmploye;
+    }
+
+    public function eraseCredentials(): void
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return $this->emailEmploye;
     }
 }
