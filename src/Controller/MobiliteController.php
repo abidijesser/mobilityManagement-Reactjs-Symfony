@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Mobilite;
+use App\Repository\MobiliteRepository;
 
 
 class MobiliteController extends AbstractController
@@ -52,9 +53,11 @@ class MobiliteController extends AbstractController
     }
 
     #[Route('/dashboard/listeMobilité', name: 'list_mobilite')]
-    public function listMobility(): Response
+    public function listMobility(MobiliteRepository $MobiliteRepository): Response
     {
-        return $this->render('mobilite/listMobility.html.twig');
+        return $this->render('mobilite/listMobility.html.twig', [
+                'mobilites' => $MobiliteRepository->findAll(),
+        ]);
     }
 
 }

@@ -8,6 +8,11 @@ use Doctrine\Persistence\ManagerRegistry;
 
 /**
  * @extends ServiceEntityRepository<Mobilite>
+ * 
+ * @method Mobilite|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Mobilite|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Mobilite[]    findAll()
+ * @method Mobilite[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class MobiliteRepository extends ServiceEntityRepository
 {

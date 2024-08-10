@@ -2,7 +2,10 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\MobiliteRepository;
 
 #[ORM\Entity(repositoryClass: MobiliteRepository::class)]
 class Mobilite
@@ -15,10 +18,10 @@ class Mobilite
     #[ORM\OneToMany(targetEntity: Candidatures::class, mappedBy: 'mobilite')]
     private Collection $candidatures;
 
-    // public function __construct()
-    // {
-    //     $this->candidatures = new ArrayCollection();
-    // }
+    public function __construct()
+    {
+        $this->candidatures = new ArrayCollection();
+    }
 
     /**
      * @return Collection|Candidatures[]
@@ -127,7 +130,7 @@ class Mobilite
         return $this;
     }
 
-    public function getOption(): ?string
+    public function getOptionn(): ?string
     {
         return $this->optionn;
     }
