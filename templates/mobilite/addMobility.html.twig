@@ -28,110 +28,112 @@
             </div>
         {% endblock %}
 
-    
-        <form action="{{ path('add_mobilite') }}" method="post">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header">
-                            <div class="card-title">Ajouter mobilité</div>
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <!-- First Pair of Inputs -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="nomEcole">Nom de l'école <span style="color: red;">*</span></label>
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="nomEcole"
-                                            name="nomEcole"
-                                            placeholder="Entrer nom de l'école"
-                                        />
-                                        
+        {% block form %}
+            <form action="{{ path('add_mobilite') }}" method="post">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Ajouter mobilité</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <!-- First Pair of Inputs -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="nomEcole">Nom de l'école <span style="color: red;">*</span></label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="nomEcole"
+                                                name="nomEcole"
+                                                placeholder="Entrer nom de l'école"
+                                            />
+                                            
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="siteWeb">Site web officiel <span style="color: red;">*</span></label>
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="siteWeb"
-                                            name="siteWeb"
-                                            placeholder="https://"
-                                        />
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="siteWeb">Site web officiel <span style="color: red;">*</span></label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="siteWeb"
+                                                name="siteWeb"
+                                                placeholder="https://"
+                                            />
+                                        </div>
                                     </div>
-                                </div>
 
-                                <!-- Second Pair of Inputs -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="niveau">Niveau <span style="color: red;">*</span></label>
-                                        <select
-                                            class="form-select form-control"
-                                            id="niveauSelect"
-                                            name="niveau" >
-                                            <option selected value="">Choisir un niveau</option>
-                                            <option value="4ème">4ème</option>
-                                            <option value="5ème">5ème</option>                                   
-                                        </select>
+                                    <!-- Second Pair of Inputs -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="niveau">Niveau <span style="color: red;">*</span></label>
+                                            <select
+                                                class="form-select form-control"
+                                                id="niveauSelect"
+                                                name="niveau" >
+                                                <option selected value="">Choisir un niveau</option>
+                                                <option value="4ème">4ème</option>
+                                                <option value="5ème">5ème</option>                                   
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="specialite">Spécialité <span style="color: red;">*</span></label>
-                                        <select
-                                            class="form-select form-control"
-                                            id="specialiteSelect"
-                                            name="specialite"
-                                        >
-                                            <option selected value="">Choisir une spécialité</option>
-                                            <option value="informatique">Informatique</option>
-                                            <option value="genie_civil">Génie civil</option>
-                                            <option value="telecommunications">Télécommunications</option>
-                                            <option value="electromecanique">Electromécanique</option>                                                                        
-                                        </select>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="specialite">Spécialité <span style="color: red;">*</span></label>
+                                            <select
+                                                class="form-select form-control"
+                                                id="specialiteSelect"
+                                                name="specialite"
+                                            >
+                                                <option selected value="">Choisir une spécialité</option>
+                                                <option value="informatique">Informatique</option>
+                                                <option value="genie_civil">Génie civil</option>
+                                                <option value="telecommunications">Télécommunications</option>
+                                                <option value="electromecanique">Electromécanique</option>                                                                        
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="option">Option <span style="color: red;">*</span></label>
-                                        <select
-                                            class="form-select form-control"
-                                            id="optionSelect"
-                                            name="option"
-                                        >
-                                            <option selected value="">Choisir une option</option>
-                                        </select>
-                                    </div>
-                                </div>                       
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="option">Option <span style="color: red;">*</span></label>
+                                            <select
+                                                class="form-select form-control"
+                                                id="optionSelect"
+                                                name="option"
+                                            >
+                                                <option selected value="">Choisir une option</option>
+                                            </select>
+                                        </div>
+                                    </div>                       
 
-                                <!-- Third Pair of Inputs -->
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="nbrePlace">Nombre de places total</label>
-                                        <input
-                                            type="text"
-                                            class="form-control"
-                                            id="nbrePlace"
-                                            name="nbrePlace"
-                                            placeholder="Entrer nombre de places"
-                                        />
+                                    <!-- Third Pair of Inputs -->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="nbrePlace">Nombre de places total</label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="nbrePlace"
+                                                name="nbrePlace"
+                                                placeholder="Entrer nombre de places"
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="card-action mt-4">
-                            <button class="btn w-25" style="background-color:#21263E; color:white;">Submit</button>
+                            <div class="card-action mt-4">
+                                <button class="btn w-25" style="background-color:#21263E; color:white;">Submit</button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        {% endblock %}
+        
     </div>
 
     {% block script %}

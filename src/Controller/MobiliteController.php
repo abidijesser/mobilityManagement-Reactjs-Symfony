@@ -51,5 +51,11 @@ class MobiliteController extends AbstractController
         return new Response('Mobility added successfully');
     }
 
+    #[Route('/dashboard/listeMobilité', name: 'list_mobilite')]
+    public function listMobility(): Response
+    {
+        return $this->render('mobilite/listMobility.html.twig');
+    }
+
 }
 

@@ -19,7 +19,6 @@
 
         <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}" />
 
-
     <!-- Fonts and icons -->
     <script src="{{ asset('js/plugin/webfont/webfont.min.js') }}"></script>
     <script>
@@ -42,7 +41,6 @@
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="{{ asset('build/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href=" {{ asset('/css/plugins.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('/css/kaiadmin.min.css') }}" />
 
@@ -123,7 +121,7 @@
                   <ul class="nav nav-collapse">
 
                     <li>
-                      <a href="components/avatars.html">
+                      <a href="{{ path('list_mobilite') }}">
                         <span class="sub-item">Liste des mobilités</span>
                       </a>
                     </li>
@@ -269,7 +267,6 @@
                 <a href="widgets.html">
                   <i class="fas fa-desktop"></i>
                   <p>Widgets</p>
-                  <span class="badge badge-success">4</span>
                 </a>
               </li>
               
@@ -734,10 +731,6 @@
     <script src="{{ asset('/js/core/popper.min.js') }}"></script>
     <script src="{{ asset('/js/core/bootstrap.min.js') }}"></script>
 
-    <!-- jQuery Scrollbar -->
-    <script src="{{ asset('/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
-
-    <!-- Chart JS -->
     <script src="{{ asset('/js/plugin/chart.js/chart.min.js') }}"></script>
 
     <!-- jQuery Sparkline -->
