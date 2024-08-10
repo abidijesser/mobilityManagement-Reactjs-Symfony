@@ -36,23 +36,11 @@
                             <h4 class="card-title">Liste des Mobilités</h4>
                         </div>
 
-                        <div class="form-group">
-                          <div class="input-group mb-3">
-                            <span class="input-group-text" id="basic-addon1"
-                              ><i class="fa fa-search"></i></span
-                            >
-                            <input
-                              type="search"
-                              class="form-control"
-                              placeholder="Rechercher..."
-                            />
-                          </div>
-
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table
-                                    id="basic-datatables"
-                                    class="display table table-striped table-hover"
+                                    id="multi-filter-select"
+                                    class="display table  table-hover"
                                 >
                                     <thead>
                                         <tr>
@@ -125,11 +113,12 @@
 
         {% block script %}
         <script>
+  
             $(document).ready(function () {
                 $("#basic-datatables").DataTable({});
 
                 $("#multi-filter-select").DataTable({
-                pageLength: 5,
+                pageLength:7,
                 initComplete: function () {
                     this.api()
                     .columns()

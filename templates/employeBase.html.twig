@@ -7,6 +7,12 @@
             Dashboard
         {% endblock %}
     </title>
+    {% block javascripts %}
+      <script src="{{ asset('/js/core/jquery-3.7.1.min.js') }}"></script>
+      <script src="{{ asset('build/runtime.js') }}" defer></script>
+      <script src="{{ asset('build/app.js') }}" defer></script>
+  {% endblock %}
+
     <meta
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
       name="viewport"
@@ -45,13 +51,10 @@
     <link rel="stylesheet" href="{{ asset('/css/kaiadmin.min.css') }}" />
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" href="{{ asset('/css/demo.css') }}" />
+    {# <link rel="stylesheet" href="{{ asset('/css/demo.css') }}" /> #}
   </head>
   <body>
-  {% block javascripts %}
-            <script src="{{ asset('build/runtime.js') }}" defer></script>
-            <script src="{{ asset('build/app.js') }}" defer></script>
-        {% endblock %}
+  
     <div class="wrapper">
       <!-- Sidebar -->
       <div class="sidebar" data-background-color="dark">
@@ -726,6 +729,8 @@
     <!--   Core JS Files   -->
     <script src="{{ asset('/js/core/jquery-3.7.1.min.js') }}"></script>
     <script src="{{ asset('js/plugin/datatables/datatables.min.js') }}"></script>
+    {# <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script> #}
     <script src="{{ asset('/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js') }}"></script>
 
     <script src="{{ asset('/js/core/popper.min.js') }}"></script>
@@ -756,8 +761,8 @@
     <script src="{{ asset('/js/kaiadmin.min.js') }}"></script>
 
     <!-- Kaiadmin DEMO methods, don't include it in your project! -->
-    <script src="{{ asset('/js/setting-demo.js') }}"></script>
-    <script src="{{ asset('/js/demo.js') }}"></script>
+    {# <script src="{{ asset('/js/setting-demo.js') }}"></script>
+    <script src="{{ asset('/js/demo.js') }}"></script> #}
     <script>
       $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
         type: "line",
