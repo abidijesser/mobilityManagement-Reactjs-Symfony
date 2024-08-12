@@ -12,12 +12,7 @@
                             <i class="icon-home"></i>
                         </a>
                     </li>
-                    <li class="separator">
-                        <i class="icon-arrow-right"></i>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#">Mobilités</a>
-                    </li>
+                    
                     <li class="separator">
                         <i class="icon-arrow-right"></i>
                     </li>
@@ -44,12 +39,13 @@
                                 >
                                     <thead>
                                         <tr>
-                                            <th>Université</th>
-                                            <th>Site web</th>
+                                            <th>Université</th>                                            
                                             <th>Niveau</th>
                                             <th>Spécialité</th>
                                             <th>Option</th>
-                                            <th>Nombre de place Total</th>
+                                            <th>Place Total</th>
+                                            <th>Place Dsiponible</th>
+                                            <th>Action</th>
                                             
                                         </tr>
                                     </thead>
@@ -57,12 +53,25 @@
                                     <tbody>
                                         {% for mobilite in mobilites %}
                                             <tr>
-                                                <td>{{ mobilite.nomUniversité }}</td>
-                                                <td><a href="{{ mobilite.siteWeb }}" target="_blank">{{ mobilite.siteWeb }}</a></td>
-                                                <td>{{ mobilite.niveau }}</td>
-                                                <td>{{ mobilite.specialite }}</td>
-                                                <td>{{ mobilite.optionn }}</td>
-                                                <td>{{ mobilite.nbreDePlaceTotal ?? '--' }}</td>
+                                                <td style="cursor: pointer;">{{ mobilite.nomUniversité }}</td>
+                                                <td style="cursor: pointer;">{{ mobilite.niveau }}</td>
+                                                <td style="cursor: pointer;">{{ mobilite.specialite }}</td>
+                                                <td style="cursor: pointer;">{{ mobilite.optionn }}</td>
+                                                <td style="cursor: pointer;">{{ mobilite.nbreDePlaceTotal ?? '--' }}</td>
+                                                <td style="cursor: pointer;">{{ mobilite.nbreDePlaceDisponible ?? '--' }}</td>
+                                                <td>
+                                                    <div class="d-flex justify-content-center align-items-center">
+                                                   
+                                                        <span class="me-3" style="cursor: pointer;">                                                       
+                                                            <i class="fas fa-pen text-primary"></i>                                                            
+                                                        </span>
+                                                        
+                                                        <span style="cursor: pointer;">
+                                                            <i class="fas fa-trash text-danger"></i>
+                                                        </span>
+                                                        
+                                                    </div>
+                                                </td>
                                                 
                                             </tr>
                                         {% endfor %}
@@ -79,8 +88,7 @@
         <script>
   
             $(document).ready(function () {
-                $("#basic-datatables").DataTable({});
-
+                
                 $("#multi-filter-select").DataTable({
                 pageLength:7,
                 initComplete: function () {
