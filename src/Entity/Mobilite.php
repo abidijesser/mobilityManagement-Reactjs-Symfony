@@ -77,6 +77,9 @@ class Mobilite
     #[ORM\Column(nullable: true)]
     private ?int $nbreDePlaceDisponible = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $nbreDePlaceReserve = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -174,6 +177,18 @@ class Mobilite
     public function setNbreDePlaceDisponible(?int $nbreDePlaceDisponible): static
     {
         $this->nbreDePlaceDisponible = $nbreDePlaceDisponible;
+
+        return $this;
+    }
+
+    public function getNbreDePlaceReserve(): ?int
+    {
+        return $this->nbreDePlaceReserve;
+    }
+
+    public function setNbreDePlaceReserve(?int $nbreDePlaceReserve): static
+    {
+        $this->nbreDePlaceReserve = $nbreDePlaceReserve;
 
         return $this;
     }
