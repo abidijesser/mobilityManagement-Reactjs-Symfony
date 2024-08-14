@@ -29,7 +29,7 @@
         {% endblock %}
 
         {% block form %}
-            <form action="{{ path('add_mobilite') }}" method="post">
+            <form id="myForm" action="{{ path('add_mobilite') }}" method="post">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card">
@@ -38,9 +38,10 @@
                             </div>
                             <div class="card-body">
                                 <div class="row">
-                                    <!-- First Pair of Inputs -->
+
                                     <div class="col-md-6">
                                         <div class="form-group">
+
                                             <label for="nomEcole">Nom de l'école <span style="color: red;">*</span></label>
                                             <input
                                                 type="text"
@@ -48,12 +49,28 @@
                                                 id="nomEcole"
                                                 name="nomEcole"
                                                 placeholder="Entrer nom de l'école"
-                                            />
-                                            
-                                        </div>
+                                            />   
+
+                                            <div id="nameError" class="error-container" style="display:none">
+												<div class="icon-container">
+													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+												</div>
+												<div class="error-message">Ce champs est requis.</div>
+											</div>  
+
+                                            <div id="nameLengthError" class="error-container" style="display:none">
+												<div class="icon-container">
+													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+												</div>
+												<div class="error-message">3 caracteres au minimum.</div>
+											</div> 
+                                                                                 
+                                        </div>									
                                     </div>
+
                                     <div class="col-md-6">
                                         <div class="form-group">
+
                                             <label for="siteWeb">Site web officiel <span style="color: red;">*</span></label>
                                             <input
                                                 type="text"
@@ -62,12 +79,27 @@
                                                 name="siteWeb"
                                                 placeholder="https://"
                                             />
+                                            <div id="sitewebError" class="error-container" style="display:none">
+												<div class="icon-container">
+													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+												</div>
+												<div class="error-message">Ce champs est requis.</div>
+											</div>  
+
+                                            <div id="regexError" class="error-container" style="display:none">
+												<div class="icon-container">
+													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+												</div>
+												<div class="error-message">URL invalide.</div>
+											</div> 
+
                                         </div>
                                     </div>
 
                                     <!-- Second Pair of Inputs -->
-                                    <div class="col-md-6 mt-3">
+                                    <div class="col-md-6 ">
                                         <div class="form-group">
+
                                             <label for="niveau">Niveau <span style="color: red;">*</span></label>
                                             <select
                                                 class="form-select form-control"
@@ -77,11 +109,19 @@
                                                 <option value="4ème">4ème</option>
                                                 <option value="5ème">5ème</option>                                   
                                             </select>
+                                            <div id="niveauError" class="error-container" style="display:none">
+												<div class="icon-container">
+													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+												</div>
+												<div class="error-message">Ce champs est requis.</div>
+											</div>   
+                                                                                        
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6 mt-3">
+                                    <div class="col-md-6 ">
                                         <div class="form-group">
+
                                             <label for="specialite">Spécialité <span style="color: red;">*</span></label>
                                             <select
                                                 class="form-select form-control"
@@ -94,11 +134,20 @@
                                                 <option value="telecommunications">Télécommunications</option>
                                                 <option value="electromecanique">Electromécanique</option>                                                                        
                                             </select>
+
+                                            <div id="specialiteError" class="error-container" style="display:none">
+												<div class="icon-container">
+													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+												</div>
+												<div class="error-message">Ce champs est requis.</div>
+											</div>   
+
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6 mt-3">
+                                    <div class="col-md-6 ">
                                         <div class="form-group">
+
                                             <label for="option">Option <span style="color: red;">*</span></label>
                                             <select
                                                 class="form-select form-control"
@@ -107,12 +156,21 @@
                                             >
                                                 <option selected value="">Choisir une option</option>
                                             </select>
+
+                                            <div id="optionError" class="error-container" style="display:none">
+												<div class="icon-container">
+													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+												</div>
+												<div class="error-message">Ce champs est requis.</div>
+											</div>  
+
                                         </div>
                                     </div>                       
 
                                     <!-- Third Pair of Inputs -->
-                                    <div class="col-md-6 mt-3">
+                                    <div class="col-md-6 ">
                                         <div class="form-group">
+
                                             <label for="nbrePlace">Nombre de places total</label>
                                             <input
                                                 type="text"
@@ -121,8 +179,16 @@
                                                 name="nbrePlace"
                                                 placeholder="Entrer nombre de places"
                                             />
+                                            <div id="nbrePlaceError" class="error-container" style="display:none" >
+												<div class="icon-container">
+													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+												</div>
+												<div class="error-message">Le nombre de place total doit etre en chiffres.</div>
+											</div>  
+
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                             <div class="card-action mt-3 ">
@@ -136,8 +202,137 @@
         
     </div>
 
-    {% block script %}
+    {% block style %}
+        <style>
+            .icon-container {
+                margin-left:3px;
+                margin-right: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }		
+
+            .error-container {
+                margin-top:3px;
+                display: flex;
+                align-items: center;
+                background-color:#FFDEDE;
+            }		
+
+            .error-message {
+                color: red;
+                font-size: 12px;
+                margin-left: 2px;
+            }		
+
+            .form-control.error-border {
+                border: 1px solid red;
+            }
+
+        </style>
+    {% endblock %}
+
+    
+
+    {% block formScript %}
         <script>
+            document.getElementById('myForm').addEventListener('submit', function(event) {
+                let isValid = true;
+             
+                const nomEcole = document.getElementById('nomEcole');
+                const nameError = document.getElementById('nameError');
+                const nameLengthError = document.getElementById('nameLengthError');
+
+                if (nomEcole.value.trim() === '') {
+                    nameError.style.display = 'flex';      
+                    nameLengthError.style.display = 'none';   
+                    nomEcole.classList.add('error-border');           
+                    isValid = false;
+                } else if ( nomEcole.value.trim().length < 3) {
+                    nameLengthError.style.display = 'flex';
+                    nameError.style.display = 'none';
+                    nomEcole.classList.add('error-border');
+                    isValid = false;
+                } else {
+                    nameLengthError.style.display = 'none';
+                    nameError.style.display = 'none';
+                    nomEcole.classList.remove('error-border');
+                }
+                
+                const siteWeb = document.getElementById('siteWeb');
+                const sitewebError = document.getElementById('sitewebError');
+                const regexError = document.getElementById('regexError');
+                const urlRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]{2,4}(\/\S*)?$/;
+
+                if (siteWeb.value.trim() === '') {
+                    sitewebError.style.display = 'flex';
+                    regexError.style.display = 'none';
+                    siteWeb.classList.add('error-border');
+                    isValid = false;
+                } else if (!urlRegex.test(siteWeb.value.trim())) {
+                    sitewebError.style.display = 'none';
+                    regexError.style.display = 'flex';
+                    siteWeb.classList.add('error-border');
+                    isValid = false;
+                } else {
+                    regexError.style.display = 'none';
+                    sitewebError.style.display = 'none';
+                    siteWeb.classList.remove('error-border');
+                }
+
+                const niveauSelect = document.getElementById('niveauSelect');
+                const niveauError = document.getElementById('niveauError');
+
+                if (niveauSelect.value === '') {
+                    niveauError.style.display = 'flex';
+                    niveauSelect.classList.add('error-border');
+                    isValid = false;
+                } else {
+                    niveauError.style.display = 'none';
+                    niveauSelect.classList.remove('error-border');
+                }
+
+                const specialiteSelect = document.getElementById('specialiteSelect');
+                const specialiteError = document.getElementById('specialiteError');
+
+                if (specialiteSelect.value === '') {
+                    specialiteError.style.display = 'flex';
+                    specialiteSelect.classList.add('error-border');
+                    isValid = false;
+                } else {
+                    specialiteError.style.display = 'none';
+                    specialiteSelect.classList.remove('error-border');
+                }
+
+                const optionSelect = document.getElementById('optionSelect');
+                const optionError = document.getElementById('optionError');
+
+                if (optionSelect.value === '') {
+                    optionError.style.display = 'flex';
+                    optionSelect.classList.add('error-border');
+                    isValid = false;
+                } else {
+                    optionError.style.display = 'none';
+                    optionSelect.classList.remove('error-border');
+                }
+
+                const nbrePlace = document.getElementById('nbrePlace');
+                const nbrePlaceError = document.getElementById('nbrePlaceError');
+
+                if (nbrePlace.value !== '' && isNaN(nbrePlace.value)) {
+                    nbrePlaceError.style.display = 'flex';
+                    nbrePlace.classList.add('error-border');
+                    isValid = false;
+                } else {
+                    nbrePlaceError.style.display = 'none';
+                    nbrePlace.classList.remove('error-border');
+                }
+
+                if (!isValid) {
+                    event.preventDefault();
+                }
+            });
+
             const specialiteSelect = document.getElementById('specialiteSelect');
             const optionSelect = document.getElementById('optionSelect');
 
@@ -152,10 +347,8 @@
                 const selectedSpecialite = this.value;
                 const correspondingOptions = options[selectedSpecialite] || [];
 
-                // Clear existing options
                 optionSelect.innerHTML = '<option value="" selected>Choisir une option</option>';
 
-                // Add new options
                 correspondingOptions.forEach(function(option) {
                     const newOption = document.createElement('option');
                     newOption.value = option;
