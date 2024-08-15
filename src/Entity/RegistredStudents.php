@@ -71,6 +71,9 @@ class RegistredStudents implements UserInterface, PasswordAuthenticatedUserInter
     #[ORM\Column(length: 255)]
     private ?string $motDePasseEtudiant = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $cin = null;
+
     public function getIdEtudiant(): ?int
     {
         return $this->id;
@@ -178,5 +181,17 @@ class RegistredStudents implements UserInterface, PasswordAuthenticatedUserInter
     public function getUserIdentifier(): string
     {
         return $this->emailEmploye;
+    }
+
+    public function getCin(): ?string
+    {
+        return $this->cin;
+    }
+
+    public function setCin(string $cin): static
+    {
+        $this->cin = $cin;
+
+        return $this;
     }
 }

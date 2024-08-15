@@ -5,25 +5,7 @@
     <title>{% block title %} S'inscrire {% endblock %}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
-    <script src="{{ asset('/js/core/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('js/plugin/webfont/webfont.min.js') }}"></script>
-    <script>
-      WebFont.load({
-        google: { families: ["Public Sans:300,400,500,600,700"] },
-        custom: {
-          families: [
-            "Font Awesome 5 Solid",
-            "Font Awesome 5 Regular",
-            "Font Awesome 5 Brands",
-            "simple-line-icons",
-          ],
-          urls: ["{{ asset('css/fonts.min.css') }}"],
-        },
-        active: function () {
-          sessionStorage.fonts = true;
-        },
-      });
-    </script>
+   
 </head>
 
 <body>
@@ -33,13 +15,13 @@
         <div class="container  h-100">
             <div class="row justify-content-center align-items-center h-100">
                 <div class="col-12 col-lg-9 col-xl-7">
-                    <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                    <div class="bg-white custom-shadow " style="border-radius: 15px;">
                         <div class="card-body p-4 p-md-5">
                             <h3 class="mb-4">S'inscrire</h3>
                             <form>
-                                <div class="row mb-3">
-                                    <div class="col-md-6 ">
-                                        <div class="form-outline">
+                                <div class="row">
+                                    <div class="col-md-6 mb-2 ">
+                                        <div class="form-outline ">
                                             <label class="mb-1" for="firstName">Nom<span style="color: red;">*</span></label>
                                             <input type="text" id="firstName" class="form-control ">                                            
                                         </div>
@@ -53,15 +35,15 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-6 mb-2 d-flex align-items-center">
+                                <div class="row ">
+                                    <div class="col-md-6 mb-2">
                                         <div class="form-outline datepicker w-100">
                                             <label  class="mb-1">Id universitaire<span style="color: red;">*</span></label>
                                             <input type="text" class="form-control " id="birthdayDate">                                           
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6 mb-2">
+                                    <div class="col-md-6 mb-2 ">
                                         <div class="form-outline">
                                             <label class="mb-1" for="firstName">CIN<span style="color: red;">*</span></label>
                                             <input type="text" id="firstName" class="form-control ">                                            
@@ -69,15 +51,15 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-6 mb-2 pb-2">
+                                <div class="row ">
+                                    <div class="col-md-6 mb-2">
                                         <div class="form-outline">
                                             <label class="mb-1" for="emailAddress">Email universitaire<span style="color: red;">*</span></label>
                                             <input type="email" id="emailAddress" class="form-control ">
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6 mb-2 pb-2">
+                                    <div class="col-md-6 mb-2 ">
                                         <div class="form-outline">
                                             <label class="mb-1" for="phoneNumber">Email personnel<span style="color: red;">*</span></label>
                                             <input type="tel" id="phoneNumber" class="form-control ">                                           
@@ -85,15 +67,15 @@
                                     </div>
                                 </div>
 
-                                <div class="row">
-                                    <div class="col-md-6 mb-2 pb-2">
+                                <div class="row ">
+                                    <div class="col-md-6 mb-2 ">
                                         <div class="form-outline">
                                             <label class="mb-1" for="emailAddress">Mot de passe<span style="color: red;">*</span></label>
                                             <input type="email" id="emailAddress" class="form-control ">                                           
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6 mb-2 pb-2">
+                                    <div class="col-md-6 mb-2 ">
                                         <div class="form-outline">
                                             <label class="mb-1" for="phoneNumber">Confirmer Mot de passe<span style="color: red;">*</span></label>
                                             <input type="tel" id="phoneNumber" class="form-control ">                                            
@@ -127,6 +109,11 @@
         .card-registration .select-arrow {
             top: 13px;
         }
+
+        .custom-shadow {
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Adjust as needed */
+        }
+        
     </style>
 </body>
 </html>
