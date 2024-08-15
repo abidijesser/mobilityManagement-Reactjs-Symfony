@@ -1,20 +1,132 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{% block title %} S'inscrire {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
+    <script src="{{ asset('/js/core/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/plugin/webfont/webfont.min.js') }}"></script>
+    <script>
+      WebFont.load({
+        google: { families: ["Public Sans:300,400,500,600,700"] },
+        custom: {
+          families: [
+            "Font Awesome 5 Solid",
+            "Font Awesome 5 Regular",
+            "Font Awesome 5 Brands",
+            "simple-line-icons",
+          ],
+          urls: ["{{ asset('css/fonts.min.css') }}"],
+        },
+        active: function () {
+          sessionStorage.fonts = true;
+        },
+      });
+    </script>
+</head>
 
-{% block title %}Hello SignupController!{% endblock %}
+<body>
+    <section class="vh-100" 
+     style="background-color:#F4F4F4"
+    >
+        <div class="container  h-100">
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9 col-xl-7">
+                    <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                        <div class="card-body p-4 p-md-5">
+                            <h3 class="mb-4">S'inscrire</h3>
+                            <form>
+                                <div class="row mb-3">
+                                    <div class="col-md-6 ">
+                                        <div class="form-outline">
+                                            <label class="mb-1" for="firstName">Nom<span style="color: red;">*</span></label>
+                                            <input type="text" id="firstName" class="form-control ">                                            
+                                        </div>
+                                    </div>
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+                                    <div class="col-md-6 mb-2">
+                                        <div class="form-outline">
+                                            <label class="mb-1" for="lastName">Prénom<span style="color: red;">*</span></label>
+                                            <input type="text" id="lastName" class="form-control ">                                            
+                                        </div>
+                                    </div>
+                                </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+                                <div class="row">
+                                    <div class="col-md-6 mb-2 d-flex align-items-center">
+                                        <div class="form-outline datepicker w-100">
+                                            <label  class="mb-1">Id universitaire<span style="color: red;">*</span></label>
+                                            <input type="text" class="form-control " id="birthdayDate">                                           
+                                        </div>
+                                    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/work baby work/Desktop/summer internship 2024-2025/espritManagementMobility/symfony/src/Controller/SignupController.php</code></li>
-        <li>Your template at <code>C:/Users/work baby work/Desktop/summer internship 2024-2025/espritManagementMobility/symfony/templates/signup/index.html.twig</code></li>
-    </ul>
-</div>
-{% endblock %}
+                                    <div class="col-md-6 mb-2">
+                                        <div class="form-outline">
+                                            <label class="mb-1" for="firstName">CIN<span style="color: red;">*</span></label>
+                                            <input type="text" id="firstName" class="form-control ">                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-2 pb-2">
+                                        <div class="form-outline">
+                                            <label class="mb-1" for="emailAddress">Email universitaire<span style="color: red;">*</span></label>
+                                            <input type="email" id="emailAddress" class="form-control ">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-2 pb-2">
+                                        <div class="form-outline">
+                                            <label class="mb-1" for="phoneNumber">Email personnel<span style="color: red;">*</span></label>
+                                            <input type="tel" id="phoneNumber" class="form-control ">                                           
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-2 pb-2">
+                                        <div class="form-outline">
+                                            <label class="mb-1" for="emailAddress">Mot de passe<span style="color: red;">*</span></label>
+                                            <input type="email" id="emailAddress" class="form-control ">                                           
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6 mb-2 pb-2">
+                                        <div class="form-outline">
+                                            <label class="mb-1" for="phoneNumber">Confirmer Mot de passe<span style="color: red;">*</span></label>
+                                            <input type="tel" id="phoneNumber" class="form-control ">                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class=" pt-2">
+                                    <button class="btn w-25" style="background-color:#21263E; color:white;">S'inscrire</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        .gradient-custom {
+            background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
+        }
+
+        .card-registration .select-input.form-control[readonly]:not([disabled]) {
+            font-size: 1rem;
+            line-height: 2.15;
+            padding-left: .75em;
+            padding-right: .75em;
+        }
+
+        .card-registration .select-arrow {
+            top: 13px;
+        }
+    </style>
+</body>
+</html>
