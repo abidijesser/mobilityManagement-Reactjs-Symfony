@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\RegistredStudents;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class SignupController extends AbstractController
 {
@@ -22,7 +23,7 @@ class SignupController extends AbstractController
     }
 
     #[Route('/signup/z', name: 'action_signup')]
-    public function signup( ManagerRegistry $doctrine, Request $request, UserPasswordHasherInterface $passwordHasher): Response
+    public function signup( ManagerRegistry $doctrine, Request $request, UserPasswordHasherInterface $passwordHasher, SessionInterface $session): Response
     {
         $student = new RegistredStudents();
         $em= $doctrine->getManager();
@@ -51,6 +52,8 @@ class SignupController extends AbstractController
         $em->persist($student);
         $em->flush();
 
-        return new Response('done');
+        $session->set('student_id', $student->getIdEtudiant());
+
+        return new Response('done, y re id is:' .$student->getIdEtudiant());
     }
 }
