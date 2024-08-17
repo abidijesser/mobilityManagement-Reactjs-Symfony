@@ -36,7 +36,8 @@
                         <div class="bg-white custom-shadow " style="border-radius: 15px;">
                             <div class="card-body p-4 p-md-5">
                                 <h3 class="mb-4">S'inscrire</h3>
-                                <form action=" {{ path('action_signup') }}" method="post">
+                                <form id="form" action=" {{ path('action_signup') }}" method="post">
+                                
                                     <div class="row">
                                         <div class="col-md-6 mb-2 ">
 
@@ -44,26 +45,44 @@
                                                 <label class="mb-1" for="nom">Nom<span style="color: red;">*</span></label>
                                                 <input type="text" id="nom" class="form-control" name="nom">                                            
                                             </div>
-                                            <div id="nameError" class="error-container" >
+
+                                            <div id="nameError" class="error-container" style="display:none" >
 												<div class="icon-container">
 													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
 												</div>
 												<div class="error-message">Ce champs est requis.</div>
+											</div> 
+
+                                            <div id="nameLengthError" class="error-container" style="display:none" >
+												<div class="icon-container">
+													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+												</div>
+												<div class="error-message">3 caracteres au minimum.</div>
 											</div> 
 
                                         </div>
 
                                         <div class="col-md-6 mb-2">
+
                                             <div class="form-outline">
                                                 <label class="mb-1" for="prenom">Prénom<span style="color: red;">*</span></label>
                                                 <input type="text" id="prenom" class="form-control " name="prenom">                                            
                                             </div>
-                                            <div id="nameError" class="error-container" >
+
+                                            <div id="prenomError" class="error-container" style="display:none" >
 												<div class="icon-container">
 													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
 												</div>
 												<div class="error-message">Ce champs est requis.</div>
 											</div> 
+
+                                            <div id="prenomLengthError" class="error-container" style="display:none" >
+												<div class="icon-container">
+													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+												</div>
+												<div class="error-message">3 caracteres au minimum.</div>
+											</div> 
+
                                         </div>
                                     </div>
 
@@ -74,81 +93,139 @@
                                                 <label  class="mb-1" for="idUniversitaire">Id universitaire<span style="color: red;">*</span></label>
                                                 <input type="text" class="form-control " id="idUniversitaire" name="idUniversitaire">                                           
                                             </div>
-                                            <div id="nameError" class="error-container" >
+
+                                            <div id="idError" class="error-container" style="display:none" >
 												<div class="icon-container">
 													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
 												</div>
 												<div class="error-message">Ce champs est requis.</div>
 											</div> 
+                                            <div id="idLengthError" class="error-container" style="display:none" >
+												<div class="icon-container">
+													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+												</div>
+												<div class="error-message">10 chiffres exactement.</div>
+											</div> 
+
                                         </div>
 
                                         <div class="col-md-6 mb-2 ">
+
                                             <div class="form-outline">
                                                 <label class="mb-1" for="cin">CIN<span style="color: red;">*</span></label>
                                                 <input type="text" id="cin" class="form-control " name="cin">                                            
                                             </div>
-                                            <div id="nameError" class="error-container" >
+
+                                            <div id="cinError" class="error-container" style="display:none" >
 												<div class="icon-container">
 													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
 												</div>
 												<div class="error-message">Ce champs est requis.</div>
 											</div> 
+
+                                            <div id="cinLengthError" class="error-container" style="display:none" >
+												<div class="icon-container">
+													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+												</div>
+												<div class="error-message">8 chiffres exactement.</div>
+											</div> 
+
                                         </div>
                                     </div>
 
                                     <div class="row ">
                                         <div class="col-md-6 mb-2">
+
                                             <div class="form-outline">
                                                 <label class="mb-1" for="emailUniversitaire">Email universitaire<span style="color: red;">*</span></label>
                                                 <input type="email" id="emailUniversitaire" class="form-control" name="emailUniversitaire">
                                             </div>
-                                            <div id="nameError" class="error-container" >
+
+                                            <div id="EmailUnversiatireError" class="error-container" style="display:none" >
 												<div class="icon-container">
 													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
 												</div>
 												<div class="error-message">Ce champs est requis.</div>
 											</div> 
+
+                                            <div id="invalidEmailUniversitaire" class="error-container" style="display:none" >
+												<div class="icon-container">
+													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+												</div>
+												<div class="error-message">Email invalide.</div>
+											</div> 
+
                                         </div>
 
                                         <div class="col-md-6 mb-2 ">
+
                                             <div class="form-outline">
                                                 <label class="mb-1" for="emailPersonnel">Email personnel<span style="color: red;">*</span></label>
                                                 <input type="email" id="emailPersonnel" class="form-control " name="emailPersonnel">                                           
                                             </div>
-                                            <div id="nameError" class="error-container" >
+
+                                            <div id="EmailPersonnelError" class="error-container" style="display:none" >
 												<div class="icon-container">
 													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
 												</div>
 												<div class="error-message">Ce champs est requis.</div>
 											</div> 
+
+                                            <div id="invalidEmailPersonnel" class="error-container" style="display:none" >
+												<div class="icon-container">
+													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+												</div>
+												<div class="error-message">Email invalide.</div>
+											</div> 
+
                                         </div>
                                     </div>
 
                                     <div class="row ">
                                         <div class="col-md-6 mb-2 ">
+
                                             <div class="form-outline">
                                                 <label class="mb-1" for="password">Mot de passe<span style="color: red;">*</span></label>
                                                 <input type="password" id="password" class="form-control" name="password">                                                                                 
                                             </div>
-                                            <div id="nameError" class="error-container" >
+
+                                            <div id="passwordError" class="error-container" style="display:none" >
 												<div class="icon-container">
 													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
 												</div>
 												<div class="error-message">Ce champs est requis.</div>
 											</div> 
+
+                                            <div id="passwordLengthError" class="error-container" style="display:none" >
+												<div class="icon-container">
+													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+												</div>
+												<div class="error-message">8 caracteres au minimum.</div>
+											</div> 
+
                                         </div>
 
                                         <div class="col-md-6 mb-2 ">
+
                                             <div class="form-outline">
                                                 <label class="mb-1" for="confirmPassword">Confirmer Mot de passe<span style="color: red;">*</span></label>
                                                 <input type="password" id="confirmPassword" class="form-control ">                                            
                                             </div>
-                                            <div id="nameError" class="error-container" >
+
+                                            <div id="ConfirmPasswordError" class="error-container" style="display:none" >
 												<div class="icon-container">
 													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
 												</div>
 												<div class="error-message">Ce champs est requis.</div>
 											</div> 
+
+                                            <div id="passwordMatchError" class="error-container" style="display:none" >
+												<div class="icon-container">
+													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+												</div>
+												<div class="error-message">Mot de passe ne correspond pas.</div>
+											</div> 
+
                                         </div>
                                     </div>
 
@@ -214,9 +291,178 @@
         </style>
 
         {% block script %}
-            <script>
-                
-            </script>               
+           <script>
+
+                document.getElementById('form').addEventListener('submit', function(event) {
+                    let isValid = true;
+
+                    const nom = document.getElementById('nom');
+                    const nameError = document.getElementById('nameError');
+                    const nameLengthError = document.getElementById('nameLengthError');
+
+                    if (nom.value.trim() === '') {
+                        nameError.style.display = 'flex';
+                        nameLengthError.style.display = 'none';
+                        nom.classList.add('error-border');
+                        isValid = false;
+                    } else if (nom.value.trim().length < 3) {
+                        nameLengthError.style.display = 'flex';
+                        nameError.style.display = 'none';
+                        nom.classList.add('error-border');
+                        isValid = false;
+                    } else {
+                        nameLengthError.style.display = 'none';
+                        nameError.style.display = 'none';
+                        nom.classList.remove('error-border');
+                    }
+
+                    const prenom = document.getElementById('prenom');
+                    const prenomError = document.getElementById('prenomError');
+                    const prenomLengthError = document.getElementById('prenomLengthError');
+
+                    if (prenom.value.trim() === '') {
+                        prenomError.style.display = 'flex';
+                        prenomLengthError.style.display = 'none';
+                        prenom.classList.add('error-border');
+                        isValid = false;
+                    } else if (prenom.value.trim().length < 3) {
+                        prenomLengthError.style.display = 'flex';
+                        prenomError.style.display = 'none';
+                        prenom.classList.add('error-border');
+                        isValid = false;
+                    } else {
+                        prenomLengthError.style.display = 'none';
+                        prenomError.style.display = 'none';
+                        prenom.classList.remove('error-border');
+                    }
+
+                    const idUniversitaire = document.getElementById('idUniversitaire');
+                    const idError = document.getElementById('idError');
+                    const idLengthError = document.getElementById('idLengthError');
+
+                    if (idUniversitaire.value.trim() === '') {
+                        idError.style.display = 'flex';
+                        idLengthError.style.display = 'none';
+                        idUniversitaire.classList.add('error-border');
+                        isValid = false;
+                    } else if (idUniversitaire.value.trim().length != 10) {
+                        idLengthError.style.display = 'flex';
+                        idError.style.display = 'none';
+                        idUniversitaire.classList.add('error-border');
+                        isValid = false;
+                    } else {
+                        idLengthError.style.display = 'none';
+                        idError.style.display = 'none';
+                        idUniversitaire.classList.remove('error-border');
+                    }
+
+                    const cin = document.getElementById('cin');
+                    const cinError = document.getElementById('cinError');
+                    const cinLengthError = document.getElementById('cinLengthError');
+                    const cinRegex = /^[0-9]{8}$/;
+
+                    if (cin.value.trim() === '') {
+                        cinError.style.display = 'flex';
+                        cinLengthError.style.display = 'none';
+                        cin.classList.add('error-border');
+                        isValid = false;
+                    } else if (!cinRegex.test(cin.value.trim())) {
+                        cinLengthError.style.display = 'flex';
+                        cinError.style.display = 'none';
+                        cin.classList.add('error-border');
+                        isValid = false;
+                    } else {
+                        cinLengthError.style.display = 'none';
+                        cinError.style.display = 'none';
+                        cin.classList.remove('error-border');
+                    }
+
+                    const emailUniversitaire = document.getElementById('emailUniversitaire');
+                    const EmailUnversiatireError = document.getElementById('EmailUnversiatireError');
+                    const invalidEmailUniversitaire = document.getElementById('invalidEmailUniversitaire');
+                    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+                    if (emailUniversitaire.value.trim() === '') {
+                        EmailUnversiatireError.style.display = 'flex';
+                        invalidEmailUniversitaire.style.display = 'none';
+                        emailUniversitaire.classList.add('error-border');
+                        isValid = false;
+                    } else if (!emailRegex.test(emailUniversitaire.value.trim())) {
+                        invalidEmailUniversitaire.style.display = 'flex';
+                        EmailUnversiatireError.style.display = 'none';
+                        emailUniversitaire.classList.add('error-border');
+                        isValid = false;
+                    } else {
+                        invalidEmailUniversitaire.style.display = 'none';
+                        EmailUnversiatireError.style.display = 'none';
+                        emailUniversitaire.classList.remove('error-border');
+                    }
+
+                    const emailPersonnel = document.getElementById('emailPersonnel');
+                    const EmailPersonnelError = document.getElementById('EmailPersonnelError');
+                    const invalidEmailPersonnel = document.getElementById('invalidEmailPersonnel');
+
+                    if (emailPersonnel.value.trim() === '') {
+                        EmailPersonnelError.style.display = 'flex';
+                        invalidEmailPersonnel.style.display = 'none';
+                        emailPersonnel.classList.add('error-border');
+                        isValid = false;
+                    } else if (!emailRegex.test(emailPersonnel.value.trim())) {
+                        invalidEmailPersonnel.style.display = 'flex';
+                        EmailPersonnelError.style.display = 'none';
+                        emailPersonnel.classList.add('error-border');
+                        isValid = false;
+                    } else {
+                        invalidEmailPersonnel.style.display = 'none';
+                        EmailPersonnelError.style.display = 'none';
+                        emailPersonnel.classList.remove('error-border');
+                    }
+
+                    const password = document.getElementById('password');
+                    const confirmPassword = document.getElementById('confirmPassword');
+                    const passwordError = document.getElementById('passwordError');
+                    const passwordLengthError = document.getElementById('passwordLengthError');
+                    const ConfirmPasswordError = document.getElementById('ConfirmPasswordError');
+                    const passwordMatchError = document.getElementById('passwordMatchError');
+
+                    if (password.value.trim() === '') {
+                        passwordError.style.display = 'flex';
+                        passwordLengthError.style.display = 'none';
+                        password.classList.add('error-border');
+                        isValid = false;
+                    } else if (password.value.trim().length < 8) {
+                        passwordLengthError.style.display = 'flex';
+                        passwordError.style.display = 'none';
+                        password.classList.add('error-border');
+                        isValid = false;
+                    } else {
+                        passwordLengthError.style.display = 'none';
+                        passwordError.style.display = 'none';
+                        password.classList.remove('error-border');
+                    }
+
+                    if (confirmPassword.value.trim() === '') {
+                        ConfirmPasswordError.style.display = 'flex';
+                        passwordMatchError.style.display = 'none';
+                        confirmPassword.classList.add('error-border');
+                        isValid = false;
+                    } else if (password.value.trim() !== confirmPassword.value.trim()) {
+                        passwordMatchError.style.display = 'flex';
+                        ConfirmPasswordError.style.display = 'none';
+                        confirmPassword.classList.add('error-border');
+                        isValid = false;
+                    } else {
+                        passwordMatchError.style.display = 'none';
+                        ConfirmPasswordError.style.display = 'none';
+                        confirmPassword.classList.remove('error-border');
+                    }
+
+                    if (!isValid) {
+                        event.preventDefault();
+                    }
+                });
+
+            </script>        
         {% endblock %}
 
     </body>
