@@ -1,119 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>{% block title %} S'inscrire {% endblock %}</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
-   
-</head>
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>{% block title %} S'inscrire {% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+        <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
+        <script src="{{ asset('js/plugin/webfont/webfont.min.js') }}"></script>
+        <script>
+        WebFont.load({
+            google: { families: ["Public Sans:300,400,500,600,700"] },
+            custom: {
+            families: [
+                "Font Awesome 5 Solid",
+                "Font Awesome 5 Regular",
+                "Font Awesome 5 Brands",
+                "simple-line-icons",
+            ],
+            urls: ["{{ asset('css/fonts.min.css') }}"],
+            },
+            active: function () {
+            sessionStorage.fonts = true;
+            },
+        });
+        </script>
+    
+    </head>
 
-<body>
-    <section class="vh-100" 
-     style="background-color:#F4F4F4"
-    >
-        <div class="container  h-100">
-            <div class="row justify-content-center align-items-center h-100">
-                <div class="col-12 col-lg-9 col-xl-7">
-                    <div class="bg-white custom-shadow " style="border-radius: 15px;">
-                        <div class="card-body p-4 p-md-5">
-                            <h3 class="mb-4">S'inscrire</h3>
-                            <form>
-                                <div class="row">
-                                    <div class="col-md-6 mb-2 ">
-                                        <div class="form-outline ">
-                                            <label class="mb-1" for="firstName">Nom<span style="color: red;">*</span></label>
-                                            <input type="text" id="firstName" class="form-control ">                                            
+    <body>
+        <section class="vh-100" 
+        style="background-color:#F4F4F4"
+        >
+            <div class="container  h-100">
+                <div class="row justify-content-center align-items-center h-100">
+                    <div class="col-12 col-lg-9 col-xl-7">
+                        <div class="bg-white custom-shadow " style="border-radius: 15px;">
+                            <div class="card-body p-4 p-md-5">
+                                <h3 class="mb-4">S'inscrire</h3>
+                                <form action=" {{ path('action_signup') }}" method="post">
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2 ">
+                                            <div class="form-outline ">
+                                                <label class="mb-1" for="nom">Nom<span style="color: red;">*</span></label>
+                                                <input type="text" id="nom" class="form-control" name="nom">                                            
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-2">
+                                            <div class="form-outline">
+                                                <label class="mb-1" for="prenom">Prénom<span style="color: red;">*</span></label>
+                                                <input type="text" id="prenom" class="form-control " name="prenom">                                            
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6 mb-2">
-                                        <div class="form-outline">
-                                            <label class="mb-1" for="lastName">Prénom<span style="color: red;">*</span></label>
-                                            <input type="text" id="lastName" class="form-control ">                                            
+                                    <div class="row ">
+                                        <div class="col-md-6 mb-2">
+                                            <div class="form-outline ">
+                                                <label  class="mb-1" for="idUniversitaire">Id universitaire<span style="color: red;">*</span></label>
+                                                <input type="text" class="form-control " id="idUniversitaire" name="idUniversitaire">                                           
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
 
-                                <div class="row ">
-                                    <div class="col-md-6 mb-2">
-                                        <div class="form-outline datepicker w-100">
-                                            <label  class="mb-1">Id universitaire<span style="color: red;">*</span></label>
-                                            <input type="text" class="form-control " id="birthdayDate">                                           
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6 mb-2 ">
-                                        <div class="form-outline">
-                                            <label class="mb-1" for="firstName">CIN<span style="color: red;">*</span></label>
-                                            <input type="text" id="firstName" class="form-control ">                                            
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row ">
-                                    <div class="col-md-6 mb-2">
-                                        <div class="form-outline">
-                                            <label class="mb-1" for="emailAddress">Email universitaire<span style="color: red;">*</span></label>
-                                            <input type="email" id="emailAddress" class="form-control ">
+                                        <div class="col-md-6 mb-2 ">
+                                            <div class="form-outline">
+                                                <label class="mb-1" for="cin">CIN<span style="color: red;">*</span></label>
+                                                <input type="text" id="cin" class="form-control " name="cin">                                            
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6 mb-2 ">
-                                        <div class="form-outline">
-                                            <label class="mb-1" for="phoneNumber">Email personnel<span style="color: red;">*</span></label>
-                                            <input type="tel" id="phoneNumber" class="form-control ">                                           
+                                    <div class="row ">
+                                        <div class="col-md-6 mb-2">
+                                            <div class="form-outline">
+                                                <label class="mb-1" for="emailUniversitaire">Email universitaire<span style="color: red;">*</span></label>
+                                                <input type="email" id="emailUniversitaire" class="form-control" name="emailUniversitaire">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-2 ">
+                                            <div class="form-outline">
+                                                <label class="mb-1" for="emailPersonnel">Email personnel<span style="color: red;">*</span></label>
+                                                <input type="email" id="emailPersonnel" class="form-control " name="emailPersonnel">                                           
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
 
-                                <div class="row ">
-                                    <div class="col-md-6 mb-2 ">
-                                        <div class="form-outline">
-                                            <label class="mb-1" for="emailAddress">Mot de passe<span style="color: red;">*</span></label>
-                                            <input type="email" id="emailAddress" class="form-control ">                                           
+                                    <div class="row ">
+                                        <div class="col-md-6 mb-2 ">
+                                            <div class="form-outline">
+                                                <label class="mb-1" for="password">Mot de passe<span style="color: red;">*</span></label>
+                                                <input type="password" id="password" class="form-control" name="password">                                                                                 
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 mb-2 ">
+                                            <div class="form-outline">
+                                                <label class="mb-1" for="confirmPassword">Confirmer Mot de passe<span style="color: red;">*</span></label>
+                                                <input type="password" id="confirmPassword" class="form-control ">                                            
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6 mb-2 ">
-                                        <div class="form-outline">
-                                            <label class="mb-1" for="phoneNumber">Confirmer Mot de passe<span style="color: red;">*</span></label>
-                                            <input type="tel" id="phoneNumber" class="form-control ">                                            
+                                    <div class="row">
+                                        <div class=" pt-2">
+                                            <button class="btn w-25 col-md-6" type="submit" style="background-color:#21263E; color:white;">S'inscrire</button>
                                         </div>
                                     </div>
-                                </div>
-
-                                <div class=" pt-2">
-                                    <button class="btn w-25" style="background-color:#21263E; color:white;">S'inscrire</button>
-                                </div>
-                            </form>
+                                    
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <style>
-        .gradient-custom {
-            background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
-        }
+        <style>
+            .gradient-custom {
+                background: linear-gradient(to bottom right, rgba(240, 147, 251, 1), rgba(245, 87, 108, 1));
+            }
 
-        .card-registration .select-input.form-control[readonly]:not([disabled]) {
-            font-size: 1rem;
-            line-height: 2.15;
-            padding-left: .75em;
-            padding-right: .75em;
-        }
+            .card-registration .select-input.form-control[readonly]:not([disabled]) {
+                font-size: 1rem;
+                line-height: 2.15;
+                padding-left: .75em;
+                padding-right: .75em;
+            }
 
-        .card-registration .select-arrow {
-            top: 13px;
-        }
+            .card-registration .select-arrow {
+                top: 13px;
+            }
 
-        .custom-shadow {
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Adjust as needed */
-        }
-        
-    </style>
-</body>
+            .custom-shadow {
+                box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Adjust as needed */
+            }
+            
+        </style>
+
+        {% block script %}
+            <script>
+                
+            </script>               
+        {% endblock %}
+
+    </body>
 </html>
