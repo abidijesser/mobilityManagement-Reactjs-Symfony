@@ -17,9 +17,7 @@ class SignupController extends AbstractController
     #[Route('/signup', name: 'app_signup')]
     public function index(): Response
     {
-        return $this->render('signup/index.html.twig', [
-            'controller_name' => 'SignupController',
-        ]);
+        return $this->render('signup/signup.html.twig');
     }
 
     #[Route('/signup/z', name: 'action_signup')]

@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>{% block title %} S'inscrire {% endblock %}</title>
+        <title>{% block title %} Login {% endblock %}</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
         <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
         <script src="{{ asset('js/plugin/webfont/webfont.min.js') }}"></script>
@@ -32,109 +32,14 @@
         >
             <div class="container  h-100">
                 <div class="row justify-content-center align-items-center h-100">
-                    <div class="col-12 col-lg-9 col-xl-7">
+                    <div class="col-12 col-lg-9 col-xl-6">
                         <div class="bg-white custom-shadow " style="border-radius: 15px;">
                             <div class="card-body p-4 p-md-5">
-                                <h3 class="mb-4">S'inscrire</h3>
+                                <h2 class="mb-4">S'inscrire</h2>
                                 <form id="form" action=" {{ path('action_signup') }}" method="post">
-                                
-                                    <div class="row">
-                                        <div class="col-md-6 mb-2 ">
-
-                                            <div class="form-outline ">
-                                                <label class="mb-1" for="nom">Nom<span style="color: red;">*</span></label>
-                                                <input type="text" id="nom" class="form-control" name="nom">                                            
-                                            </div>
-
-                                            <div id="nameError" class="error-container" style="display:none" >
-												<div class="icon-container">
-													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
-												</div>
-												<div class="error-message">Ce champs est requis.</div>
-											</div> 
-
-                                            <div id="nameLengthError" class="error-container" style="display:none" >
-												<div class="icon-container">
-													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
-												</div>
-												<div class="error-message">3 caracteres au minimum.</div>
-											</div> 
-
-                                        </div>
-
-                                        <div class="col-md-6 mb-2">
-
-                                            <div class="form-outline">
-                                                <label class="mb-1" for="prenom">Prénom<span style="color: red;">*</span></label>
-                                                <input type="text" id="prenom" class="form-control " name="prenom">                                            
-                                            </div>
-
-                                            <div id="prenomError" class="error-container" style="display:none" >
-												<div class="icon-container">
-													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
-												</div>
-												<div class="error-message">Ce champs est requis.</div>
-											</div> 
-
-                                            <div id="prenomLengthError" class="error-container" style="display:none" >
-												<div class="icon-container">
-													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
-												</div>
-												<div class="error-message">3 caracteres au minimum.</div>
-											</div> 
-
-                                        </div>
-                                    </div>
-
+                                                                   
                                     <div class="row ">
-                                        <div class="col-md-6 mb-2">
-
-                                            <div class="form-outline ">
-                                                <label  class="mb-1" for="idUniversitaire">Id universitaire<span style="color: red;">*</span></label>
-                                                <input type="text" class="form-control " id="idUniversitaire" name="idUniversitaire">                                           
-                                            </div>
-
-                                            <div id="idError" class="error-container" style="display:none" >
-												<div class="icon-container">
-													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
-												</div>
-												<div class="error-message">Ce champs est requis.</div>
-											</div> 
-                                            <div id="idLengthError" class="error-container" style="display:none" >
-												<div class="icon-container">
-													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
-												</div>
-												<div class="error-message">10 chiffres exactement.</div>
-											</div> 
-
-                                        </div>
-
-                                        <div class="col-md-6 mb-2 ">
-
-                                            <div class="form-outline">
-                                                <label class="mb-1" for="cin">CIN<span style="color: red;">*</span></label>
-                                                <input type="text" id="cin" class="form-control " name="cin">                                            
-                                            </div>
-
-                                            <div id="cinError" class="error-container" style="display:none" >
-												<div class="icon-container">
-													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
-												</div>
-												<div class="error-message">Ce champs est requis.</div>
-											</div> 
-
-                                            <div id="cinLengthError" class="error-container" style="display:none" >
-												<div class="icon-container">
-													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
-												</div>
-												<div class="error-message">8 chiffres exactement.</div>
-											</div> 
-
-                                        </div>
-                                    </div>
-
-                                    <div class="row ">
-                                        <div class="col-md-6 mb-2">
+                                        <div class="mb-2">
 
                                             <div class="form-outline">
                                                 <label class="mb-1" for="emailUniversitaire">Email universitaire<span style="color: red;">*</span></label>
@@ -155,34 +60,11 @@
 												<div class="error-message">Email invalide.</div>
 											</div> 
 
-                                        </div>
-
-                                        <div class="col-md-6 mb-2 ">
-
-                                            <div class="form-outline">
-                                                <label class="mb-1" for="emailPersonnel">Email personnel<span style="color: red;">*</span></label>
-                                                <input type="email" id="emailPersonnel" class="form-control " name="emailPersonnel">                                           
-                                            </div>
-
-                                            <div id="EmailPersonnelError" class="error-container" style="display:none" >
-												<div class="icon-container">
-													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
-												</div>
-												<div class="error-message">Ce champs est requis.</div>
-											</div> 
-
-                                            <div id="invalidEmailPersonnel" class="error-container" style="display:none" >
-												<div class="icon-container">
-													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
-												</div>
-												<div class="error-message">Email invalide.</div>
-											</div> 
-
-                                        </div>
+                                        </div>                                       
                                     </div>
 
                                     <div class="row ">
-                                        <div class="col-md-6 mb-2 ">
+                                        <div class="mb-2 ">
 
                                             <div class="form-outline">
                                                 <label class="mb-1" for="password">Mot de passe<span style="color: red;">*</span></label>
@@ -203,37 +85,22 @@
 												<div class="error-message">8 caracteres au minimum.</div>
 											</div> 
 
-                                        </div>
+                                        </div>                                        
+                                    </div>
 
-                                        <div class="col-md-6 mb-2 ">
-
-                                            <div class="form-outline">
-                                                <label class="mb-1" for="confirmPassword">Confirmer Mot de passe<span style="color: red;">*</span></label>
-                                                <input type="password" id="confirmPassword" class="form-control ">                                            
-                                            </div>
-
-                                            <div id="ConfirmPasswordError" class="error-container" style="display:none" >
-												<div class="icon-container">
-													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
-												</div>
-												<div class="error-message">Ce champs est requis.</div>
-											</div> 
-
-                                            <div id="passwordMatchError" class="error-container" style="display:none" >
-												<div class="icon-container">
-													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
-												</div>
-												<div class="error-message">Mot de passe ne correspond pas.</div>
-											</div> 
-
+                                    <div class="row">
+                                        <div class="mt-4">
+                                            <button class="btn col-md-6" type="submit" style="background-color:#21263E; color:white; width:100%; font-family: sans-serif;">S'inscrire</button>                                           
                                         </div>
                                     </div>
 
                                     <div class="row">
-                                        <div class=" pt-2">
-                                            <button class="btn w-25 col-md-6" type="submit" style="background-color:#21263E; color:white;">S'inscrire</button>
+                                        <div class="mt-1">
+                                            Avez vous déja un compte? <span style="color:#21263E;  font-family: serif; cursor: pointer;"><b>Se connecter</b></span>
+
                                         </div>
                                     </div>
+
                                     
                                 </form>
                             </div>
