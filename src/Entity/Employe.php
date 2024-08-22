@@ -19,7 +19,7 @@ class Employe implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $nomEmploye = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $prenomEmploye = null;
+    private ?string $prenom = null;
 
     #[ORM\Column(length: 255, unique: true)]
     private ?string $emailEmploye = null;
@@ -47,12 +47,12 @@ class Employe implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getPrenomEmploye(): ?string
     {
-        return $this->prenomEmploye;
+        return $this->prenom;
     }
 
     public function setPrenomEmploye(string $prenom): static
     {
-        $this->prenomEmploye = $prenom;
+        $this->prenom = $prenom;
 
         return $this;
     }

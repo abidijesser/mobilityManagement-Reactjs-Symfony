@@ -59,7 +59,7 @@ class RegistredStudents implements UserInterface, PasswordAuthenticatedUserInter
     private ?string $nomEtudiant = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $prenomEtudiant = null;
+    private ?string $prenom = null;
 
     #[ORM\Column(length: 255)]
     private ?string $emailUniversitaire = null;
@@ -95,12 +95,12 @@ class RegistredStudents implements UserInterface, PasswordAuthenticatedUserInter
 
     public function getPrenomEtudiant(): ?string
     {
-        return $this->prenomEtudiant;
+        return $this->prenom;
     }
 
     public function setPrenomEtudiant(string $prenom): static
     {
-        $this->prenomEtudiant = $prenom;
+        $this->prenom = $prenom;
 
         return $this;
     }
@@ -153,6 +153,18 @@ class RegistredStudents implements UserInterface, PasswordAuthenticatedUserInter
         return $this;
     }
 
+    public function getCin(): ?string
+    {
+        return $this->cin;
+    }
+
+    public function setCin(string $cin): static
+    {
+        $this->cin = $cin;
+
+        return $this;
+    }
+
     public function getRoles(): array
     {
         
@@ -172,7 +184,7 @@ class RegistredStudents implements UserInterface, PasswordAuthenticatedUserInter
 
     public function getUsername(): string
     {
-        return $this->emailEmploye;
+        return $this->prenom;
     }
 
     public function eraseCredentials(): void
@@ -182,18 +194,8 @@ class RegistredStudents implements UserInterface, PasswordAuthenticatedUserInter
 
     public function getUserIdentifier(): string
     {
-        return $this->emailEmploye;
+        return $this->prenom;
     }
 
-    public function getCin(): ?string
-    {
-        return $this->cin;
-    }
-
-    public function setCin(string $cin): static
-    {
-        $this->cin = $cin;
-
-        return $this;
-    }
+    
 }
