@@ -47,7 +47,7 @@ class LoginController extends AbstractController
                     'Your changes were saved!'
                 );
                 
-                return $this->redirectToRoute('list_mobilite'); 
+                return $this->redirectToRoute('dashboard'); 
 
             } else {
                 return new Response('Mot de passe incorrect.');
