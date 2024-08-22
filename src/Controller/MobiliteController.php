@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Mobilite;
+use App\Repository\MobiliteRepository;
 
 
 class MobiliteController extends AbstractController

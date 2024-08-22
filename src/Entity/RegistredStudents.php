@@ -156,12 +156,12 @@ class RegistredStudents implements UserInterface, PasswordAuthenticatedUserInter
     public function getRoles(): array
     {
         
-        return ['Employe'];
+        return ['Student'];
     }
 
     public function getPassword(): ?string
     {
-        return $this->motDePasseEmploye;
+        return $this->motDePasseEtudiant;
     }
 
     public function getSalt(): ?string

@@ -28,7 +28,7 @@
 
     <body>
         <section class="vh-100" 
-        style="background-color:#EDF6FF"
+        style="background-color:#F3F9FF"
         >
             <div class="container  h-100">
                 <div class="row justify-content-center align-items-center h-100">
@@ -231,18 +231,26 @@
 
                                     <div class="row">
                                         <div class="mt-4">
-                                            <button class="btn col-md-6" type="submit" style="background-color:#21263E; color:white; width:100%; font-family: sans-serif;">S'inscrire</button>                                           
+                                            <button class="btn col-md-6" type="submit" 
+                                                style="background-color:#21263E; color:white; width:100%; font-family: sans-serif;">
+                                                S'inscrire
+                                            </button>                                           
                                         </div>
                                     </div>
 
                                     <div class="row">
                                         <div class="mt-1">
-                                            Avez vous déja un compte? <span style="color:#21263E;  font-family: serif; cursor: pointer;"><b>Se connecter</b></span>
-
+                                            Avez vous déja un compte? 
+                                            <span>
+                                                <a class="nav-item" 
+                                                    style="color:#21263E; text-decoration: none; font-family: serif; cursor: pointer;" 
+                                                    href="{{ path('app_login') }}" >
+                                                    <b>Se conncter</b>
+                                                </a>
+                                            </span>
                                         </div>
                                     </div>
-
-                                    
+                                   
                                 </form>
                             </div>
                         </div>
