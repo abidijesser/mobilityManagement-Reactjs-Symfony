@@ -4,16 +4,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title> 
         {% block title %}
-            Dashboard
+            ESPRIT Mobilité
         {% endblock %}
     </title>
+
+    {% block javascripts %}
+      <script src="{{ asset('/js/core/jquery-3.7.1.min.js') }}"></script>
+      <script src="{{ asset('build/runtime.js') }}" defer></script>
+      <script src="{{ asset('build/app.js') }}" defer></script>
+    {% endblock %}
+    
     <meta
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
       name="viewport"
     />
     <link
       rel="icon"
-      href="{{ asset('img/kaiadmin/favicon.ico') }}"
+      href="{{ asset('img/esprit/espritLogo.png') }}"
       type="image/x-icon"
     />
 
@@ -47,10 +54,7 @@
     <link rel="stylesheet" href="{{ asset('/css/demo.css') }}" />
   </head>
   <body>
-  {% block javascripts %}
-            <script src="{{ asset('build/runtime.js') }}" defer></script>
-            <script src="{{ asset('build/app.js') }}" defer></script>
-        {% endblock %}
+  
     <div class="wrapper">
       <!-- Sidebar -->
       <div class="sidebar" data-background-color="dark">
@@ -59,10 +63,11 @@
           <div class="logo-header" data-background-color="dark">
             <a href="index.html" class="logo">
               <img
-                src="{{ asset('/img/kaiadmin/logo_light.svg') }}"
+                  src="{{ asset('/img/esprit/espritLogo.png') }}"
                 alt="navbar brand"
                 class="navbar-brand"
-                height="20"
+                height="60"
+                width="170"
               />
             </a>
             <div class="nav-toggle">
@@ -82,27 +87,15 @@
         <div class="sidebar-wrapper scrollbar scrollbar-inner">
           <div class="sidebar-content">
             <ul class="nav nav-secondary">
+
               <li class="nav-item active">
-                <a
-                  data-bs-toggle="collapse"
-                  href="#dashboard"
-                  class="collapsed"
-                  aria-expanded="false"
-                >
+                <a href="{{ path('employe_dashboard') }}" >
                   <i class="fas fa-home"></i>
                   <p>Dashboard</p>
-                  <span class="caret"></span>
                 </a>
-                <div class="collapse" id="dashboard">
-                  <ul class="nav nav-collapse">
-                    <li>
-                      <a href="../demo1/index.html">
-                        <span class="sub-item">Dashboard 1</span>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
               </li>
+
+
               <li class="nav-section">
                 <span class="sidebar-mini-icon">
                   <i class="fa fa-ellipsis-h"></i>
@@ -343,7 +336,7 @@
             <div class="logo-header" data-background-color="dark">
               <a href="index.html" class="logo">
                 <img
-                  src="{{ asset('/img/kaiadmin/logo_light.svg') }}"
+                  src="{{ asset('/img/esprit/espritLogo.png') }}"
                   alt="navbar brand"
                   class="navbar-brand"
                   height="20"

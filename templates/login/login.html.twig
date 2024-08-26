@@ -42,23 +42,32 @@
                                         <div class="mb-2">
 
                                             <div class="form-outline">
-                                                <label class="mb-1" for="emailUniversitaire">Email universitaire<span style="color: red;">*</span></label>
-                                                <input type="email" id="emailUniversitaire" class="form-control" name="emailUniversitaire">
+                                                <label class="mb-1" for="email">Email<span style="color: red;">*</span></label>
+                                                <input type="text" id="email" class="form-control" name="email">
                                             </div>
 
-                                            <div id="EmailUnversiatireError" class="error-container" style="display:none" >
+                                            <div id="emailError" class="error-container" style="display:none" >
 												<div class="icon-container">
 													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
 												</div>
 												<div class="error-message">Ce champs est requis.</div>
 											</div> 
 
-                                            <div id="invalidEmailUniversitaire" class="error-container" style="display:none" >
+                                            <div id="invalidEmail" class="error-container" style="display:none" >
 												<div class="icon-container">
 													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
 												</div>
 												<div class="error-message">Email invalide.</div>
 											</div> 
+
+                                            {% if emailIntrouvable %}
+                                                <div class="error-container">
+                                                    <div class="icon-container">
+                                                        <i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+                                                    </div>
+                                                    <div class="error-message">{{ emailIntrouvable }}</div>
+                                                </div> 
+                                            {% endif %}
 
                                         </div>                                       
                                     </div>
@@ -85,11 +94,20 @@
 												<div class="error-message">8 caracteres au minimum.</div>
 											</div> 
 
+                                            {% if passwordIntrouvable %}
+                                                <div class="error-container">
+                                                    <div class="icon-container">
+                                                        <i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+                                                    </div>
+                                                    <div class="error-message"> {{ passwordIntrouvable }}</div>
+                                                </div> 
+                                            {% endif %}
+
                                         </div>                                        
                                     </div>
 
                                     <div class="row">
-                                        <div class="mt-4">
+                                        <div class="mt-3">
                                             <button class="btn col-md-6" type="submit" 
                                                 style="background-color:#21263E; color:white; width:100%; font-family: sans-serif;">
                                                 Se connecter
@@ -169,173 +187,56 @@
            <script>
 
                 document.getElementById('form').addEventListener('submit', function(event) {
-                    let isValid = true;
+                let isValid = true;
 
-                    const nom = document.getElementById('nom');
-                    const nameError = document.getElementById('nameError');
-                    const nameLengthError = document.getElementById('nameLengthError');
+                // Email Universitaire Validation
+                const email = document.getElementById('email');
+                const emailError = document.getElementById('emailError');
+                const invalidEmail = document.getElementById('invalidEmail');
+                const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
-                    if (nom.value.trim() === '') {
-                        nameError.style.display = 'flex';
-                        nameLengthError.style.display = 'none';
-                        nom.classList.add('error-border');
-                        isValid = false;
-                    } else if (nom.value.trim().length < 3) {
-                        nameLengthError.style.display = 'flex';
-                        nameError.style.display = 'none';
-                        nom.classList.add('error-border');
-                        isValid = false;
-                    } else {
-                        nameLengthError.style.display = 'none';
-                        nameError.style.display = 'none';
-                        nom.classList.remove('error-border');
-                    }
+                if (email.value.trim() === '') {
+                    emailError.style.display = 'flex';
+                    invalidEmail.style.display = 'none';
+                    email.classList.add('error-border');
+                    isValid = false;
+                } else if (!emailRegex.test(email.value.trim())) {
+                    invalidEmail.style.display = 'flex';
+                    emailError.style.display = 'none';
+                    email.classList.add('error-border');
+                    isValid = false;
+                } else {
+                    invalidEmail.style.display = 'none';
+                    emailError.style.display = 'none';
+                    email.classList.remove('error-border');
+                }
 
-                    const prenom = document.getElementById('prenom');
-                    const prenomError = document.getElementById('prenomError');
-                    const prenomLengthError = document.getElementById('prenomLengthError');
+                // Password Validation
+                const password = document.getElementById('password');
+                const passwordError = document.getElementById('passwordError');
+                const passwordLengthError = document.getElementById('passwordLengthError');
 
-                    if (prenom.value.trim() === '') {
-                        prenomError.style.display = 'flex';
-                        prenomLengthError.style.display = 'none';
-                        prenom.classList.add('error-border');
-                        isValid = false;
-                    } else if (prenom.value.trim().length < 3) {
-                        prenomLengthError.style.display = 'flex';
-                        prenomError.style.display = 'none';
-                        prenom.classList.add('error-border');
-                        isValid = false;
-                    } else {
-                        prenomLengthError.style.display = 'none';
-                        prenomError.style.display = 'none';
-                        prenom.classList.remove('error-border');
-                    }
+                if (password.value.trim() === '') {
+                    passwordError.style.display = 'flex';
+                    passwordLengthError.style.display = 'none';
+                    password.classList.add('error-border');
+                    isValid = false;
+                } else if (password.value.trim().length < 8) {
+                    passwordLengthError.style.display = 'flex';
+                    passwordError.style.display = 'none';
+                    password.classList.add('error-border');
+                    isValid = false;
+                } else {
+                    passwordLengthError.style.display = 'none';
+                    passwordError.style.display = 'none';
+                    password.classList.remove('error-border');
+                }
 
-                    const idUniversitaire = document.getElementById('idUniversitaire');
-                    const idError = document.getElementById('idError');
-                    const idLengthError = document.getElementById('idLengthError');
+                if (!isValid) {
+                    event.preventDefault();
+                }
+            });
 
-                    if (idUniversitaire.value.trim() === '') {
-                        idError.style.display = 'flex';
-                        idLengthError.style.display = 'none';
-                        idUniversitaire.classList.add('error-border');
-                        isValid = false;
-                    } else if (idUniversitaire.value.trim().length != 10) {
-                        idLengthError.style.display = 'flex';
-                        idError.style.display = 'none';
-                        idUniversitaire.classList.add('error-border');
-                        isValid = false;
-                    } else {
-                        idLengthError.style.display = 'none';
-                        idError.style.display = 'none';
-                        idUniversitaire.classList.remove('error-border');
-                    }
-
-                    const cin = document.getElementById('cin');
-                    const cinError = document.getElementById('cinError');
-                    const cinLengthError = document.getElementById('cinLengthError');
-                    const cinRegex = /^[0-9]{8}$/;
-
-                    if (cin.value.trim() === '') {
-                        cinError.style.display = 'flex';
-                        cinLengthError.style.display = 'none';
-                        cin.classList.add('error-border');
-                        isValid = false;
-                    } else if (!cinRegex.test(cin.value.trim())) {
-                        cinLengthError.style.display = 'flex';
-                        cinError.style.display = 'none';
-                        cin.classList.add('error-border');
-                        isValid = false;
-                    } else {
-                        cinLengthError.style.display = 'none';
-                        cinError.style.display = 'none';
-                        cin.classList.remove('error-border');
-                    }
-
-                    const emailUniversitaire = document.getElementById('emailUniversitaire');
-                    const EmailUnversiatireError = document.getElementById('EmailUnversiatireError');
-                    const invalidEmailUniversitaire = document.getElementById('invalidEmailUniversitaire');
-                    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-                    if (emailUniversitaire.value.trim() === '') {
-                        EmailUnversiatireError.style.display = 'flex';
-                        invalidEmailUniversitaire.style.display = 'none';
-                        emailUniversitaire.classList.add('error-border');
-                        isValid = false;
-                    } else if (!emailRegex.test(emailUniversitaire.value.trim())) {
-                        invalidEmailUniversitaire.style.display = 'flex';
-                        EmailUnversiatireError.style.display = 'none';
-                        emailUniversitaire.classList.add('error-border');
-                        isValid = false;
-                    } else {
-                        invalidEmailUniversitaire.style.display = 'none';
-                        EmailUnversiatireError.style.display = 'none';
-                        emailUniversitaire.classList.remove('error-border');
-                    }
-
-                    const emailPersonnel = document.getElementById('emailPersonnel');
-                    const EmailPersonnelError = document.getElementById('EmailPersonnelError');
-                    const invalidEmailPersonnel = document.getElementById('invalidEmailPersonnel');
-
-                    if (emailPersonnel.value.trim() === '') {
-                        EmailPersonnelError.style.display = 'flex';
-                        invalidEmailPersonnel.style.display = 'none';
-                        emailPersonnel.classList.add('error-border');
-                        isValid = false;
-                    } else if (!emailRegex.test(emailPersonnel.value.trim())) {
-                        invalidEmailPersonnel.style.display = 'flex';
-                        EmailPersonnelError.style.display = 'none';
-                        emailPersonnel.classList.add('error-border');
-                        isValid = false;
-                    } else {
-                        invalidEmailPersonnel.style.display = 'none';
-                        EmailPersonnelError.style.display = 'none';
-                        emailPersonnel.classList.remove('error-border');
-                    }
-
-                    const password = document.getElementById('password');
-                    const confirmPassword = document.getElementById('confirmPassword');
-                    const passwordError = document.getElementById('passwordError');
-                    const passwordLengthError = document.getElementById('passwordLengthError');
-                    const ConfirmPasswordError = document.getElementById('ConfirmPasswordError');
-                    const passwordMatchError = document.getElementById('passwordMatchError');
-
-                    if (password.value.trim() === '') {
-                        passwordError.style.display = 'flex';
-                        passwordLengthError.style.display = 'none';
-                        password.classList.add('error-border');
-                        isValid = false;
-                    } else if (password.value.trim().length < 8) {
-                        passwordLengthError.style.display = 'flex';
-                        passwordError.style.display = 'none';
-                        password.classList.add('error-border');
-                        isValid = false;
-                    } else {
-                        passwordLengthError.style.display = 'none';
-                        passwordError.style.display = 'none';
-                        password.classList.remove('error-border');
-                    }
-
-                    if (confirmPassword.value.trim() === '') {
-                        ConfirmPasswordError.style.display = 'flex';
-                        passwordMatchError.style.display = 'none';
-                        confirmPassword.classList.add('error-border');
-                        isValid = false;
-                    } else if (password.value.trim() !== confirmPassword.value.trim()) {
-                        passwordMatchError.style.display = 'flex';
-                        ConfirmPasswordError.style.display = 'none';
-                        confirmPassword.classList.add('error-border');
-                        isValid = false;
-                    } else {
-                        passwordMatchError.style.display = 'none';
-                        ConfirmPasswordError.style.display = 'none';
-                        confirmPassword.classList.remove('error-border');
-                    }
-
-                    if (!isValid) {
-                        event.preventDefault();
-                    }
-                });
 
             </script>        
         {% endblock %}

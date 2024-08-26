@@ -2,16 +2,18 @@
 <html lang="en">
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
     <title> 
         {% block title %}
             Dashboard
         {% endblock %}
     </title>
+
     {% block javascripts %}
       <script src="{{ asset('/js/core/jquery-3.7.1.min.js') }}"></script>
       <script src="{{ asset('build/runtime.js') }}" defer></script>
       <script src="{{ asset('build/app.js') }}" defer></script>
-  {% endblock %}
+    {% endblock %}
 
     <meta
       content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
@@ -102,7 +104,7 @@
               </li> #}
 
               <li class="nav-item active">
-                <a href="{{ path('dashboard') }}" >
+                <a href="{{ path('employe_dashboard') }}" >
                   <i class="fas fa-home"></i>
                   <p>Dashboard</p>
                 </a>
