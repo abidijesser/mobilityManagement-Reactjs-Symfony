@@ -15,20 +15,23 @@ use Symfony\Component\HttpFoundation\RequestStack;
 
 
 
-class LoginController extends AbstractController
+class securityController extends AbstractController
 {
     #[Route('/login', name: 'app_login')]
-    public function index(): Response
+    public function index(SessionInterface $session): Response
     {
         $emailIntrouvable = null;
         $passwordIntrouvable=null;
+        
+        $session->invalidate();
+
         return $this->render('login/login.html.twig', [
             'emailIntrouvable' => $emailIntrouvable,
             'passwordIntrouvable' => $passwordIntrouvable
         ]);
     }
 
-   #[Route('/login/?', name: 'action_login')]
+    #[Route('/login/?', name: 'action_login')]
     public function login(Request $request, ManagerRegistry $doctrine, UserPasswordHasherInterface $passwordHasher, SessionInterface $session): Response
     {
         $email = $request->request->get('email');
@@ -39,7 +42,9 @@ class LoginController extends AbstractController
         if ($student) {
 
             if ($passwordHasher->isPasswordValid($student, $password)) {
-                $session->set('student_id', $student->getIdEtudiant());          
+                $session->set('user_id', $student->getIdEtudiant());
+                $session->set('user_type', 'student');
+
                 return $this->redirectToRoute('student_dashboard'); 
 
             } else {
@@ -54,7 +59,9 @@ class LoginController extends AbstractController
         } elseif ($employe = $doctrine->getRepository(Employe::class)->findOneBy(['emailEmploye' => $email])) {
 
             if ($passwordHasher->isPasswordValid($employe, $password)) {
-                $session->set('employe_id', $employe->getId());
+                $session->set('user_id', $employe->getId());
+                $session->set('user_type', 'employe');
+
                 return $this->redirectToRoute('employe_dashboard'); 
 
             } else {
@@ -76,6 +83,13 @@ class LoginController extends AbstractController
                 'passwordIntrouvable' => $passwordIntrouvable
             ]);
         }
+    }
+
+    #[Route('/lougout', name: 'logout_action')]
+    public function logout(SessionInterface $session): Response
+    {
+        $session->invalidate();
+        return $this->redirectToRoute('app_login');
     }
 
 

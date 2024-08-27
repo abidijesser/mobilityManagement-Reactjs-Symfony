@@ -6,6 +6,13 @@
 
                     <p class="fw-bold fs-3 mb-2"> Dashboard student</p>
 
+                    {% if app.session.get('user_id') %}
+                        <p>User ID: {{ app.session.get('user_id') }}</p>
+                        <p>User Type: {{ app.session.get('user_type') }}</p>
+                    {% else %}
+                        <p>No user is logged in.</p>
+                    {% endif %}
+
             </div>
         </div>    
     {% endblock %}
