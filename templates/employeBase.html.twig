@@ -696,7 +696,17 @@
                             />
                           </div>
                           <div class="u-text">
-                            <h4>Hizrian</h4>
+                            <h4>
+
+                                {% if app.session.get('user_id') %}
+                                {{ app.session.get('user_name')|capitalize }}
+
+                                {% else %}
+                                    <p>No user is logged in.</p>
+
+                                {% endif %}
+                                
+                            </h4>
                             <p class="text-muted">hello@example.com</p>
                             <a
                               href="profile.html"

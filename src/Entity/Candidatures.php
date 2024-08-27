@@ -60,6 +60,9 @@ class Candidatures
     #[ORM\Column(length: 255)]
     private ?string $reponse = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $specialite = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -227,6 +230,18 @@ class Candidatures
     public function setReponse(string $reponse): static
     {
         $this->reponse = $reponse;
+
+        return $this;
+    }
+
+    public function getSpecialite(): ?string
+    {
+        return $this->specialite;
+    }
+
+    public function setSpecialite(string $specialite): static
+    {
+        $this->specialite = $specialite;
 
         return $this;
     }

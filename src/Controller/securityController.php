@@ -42,8 +42,11 @@ class securityController extends AbstractController
         if ($student) {
 
             if ($passwordHasher->isPasswordValid($student, $password)) {
+
                 $session->set('user_id', $student->getIdEtudiant());
+                $session->set('user_idUniversitaire', $student->getIdEtudiantUniversitaire());
                 $session->set('user_name', $student->getNomEtudiant());
+                $session->set('user_prenom', $student->getPrenomEtudiant());
                 $session->set('user_type', 'student');
 
                 return $this->redirectToRoute('student_dashboard'); 
