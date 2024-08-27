@@ -22,7 +22,7 @@ class securityController extends AbstractController
     {
         $emailIntrouvable = null;
         $passwordIntrouvable=null;
-        
+
         $session->invalidate();
 
         return $this->render('login/login.html.twig', [
@@ -43,6 +43,7 @@ class securityController extends AbstractController
 
             if ($passwordHasher->isPasswordValid($student, $password)) {
                 $session->set('user_id', $student->getIdEtudiant());
+                $session->set('user_name', $student->getNomEtudiant());
                 $session->set('user_type', 'student');
 
                 return $this->redirectToRoute('student_dashboard'); 
@@ -60,6 +61,7 @@ class securityController extends AbstractController
 
             if ($passwordHasher->isPasswordValid($employe, $password)) {
                 $session->set('user_id', $employe->getId());
+                $session->set('user_name', $employe->getNomEmploye());
                 $session->set('user_type', 'employe');
 
                 return $this->redirectToRoute('employe_dashboard'); 

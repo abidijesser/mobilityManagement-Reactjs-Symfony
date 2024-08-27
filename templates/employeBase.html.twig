@@ -671,7 +671,17 @@
                     </div>
                     <span class="profile-username">
                       <span class="op-7">Hi,</span>
-                      <span class="fw-bold">Hizrian</span>
+                      <span class="fw-bold">
+
+                        {% if app.session.get('user_id') %}
+                              {{ app.session.get('user_name')|capitalize }}
+
+                          {% else %}
+                              <p>No user is logged in.</p>
+
+                          {% endif %}
+
+                      </span>
                     </span>
                   </a>
                   <ul class="dropdown-menu dropdown-user animated fadeIn">
@@ -704,7 +714,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Account Setting</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="{{ path('logout_action') }}">Se déconnecter</a>
                       </li>
                     </div>
                   </ul>
