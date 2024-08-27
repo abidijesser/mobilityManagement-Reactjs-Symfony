@@ -57,6 +57,9 @@ class Candidatures
     #[ORM\Column]
     private ?float $score = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $reponse = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -213,6 +216,18 @@ class Candidatures
     public function setScore(float $score): self
     {
         $this->score = $score;
+        return $this;
+    }
+
+    public function getReponse(): ?string
+    {
+        return $this->reponse;
+    }
+
+    public function setReponse(string $reponse): static
+    {
+        $this->reponse = $reponse;
+
         return $this;
     }
 }
