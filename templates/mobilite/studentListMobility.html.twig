@@ -1,0 +1,139 @@
+{% extends 'studentBase.html.twig' %}
+
+{% block body %}
+    <div class="page-inner">
+        
+        {% block bageHeader %}
+            <div class="page-header">
+                <h3 class="fw-bold mb-3">Mobilités</h3>
+                <ul class="breadcrumbs mb-3">
+                    <li class="nav-home">
+                        <a href="#">
+                            <i class="icon-home"></i>
+                        </a>
+                    </li>
+                    
+                    <li class="separator">
+                        <i class="icon-arrow-right"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Liste des mobilités</a>
+                    </li>
+                </ul>
+            </div>             
+        {% endblock %}
+
+        {% block Table %}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="card-title">Liste des Mobilités</h4>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table
+                                    id="multi-filter-select"
+                                    class="display table"
+                                >
+                                    <thead>
+                                        <tr>
+                                            <th>Université</th>   
+                                            <th>Site Web</th>                                         
+                                            <th>Niveau</th>
+                                            <th>Spécialité</th>
+                                            <th>Option</th>
+                                            <th>Place Dsiponible</th>      
+                                            <th>Action</th>                                                                                
+                                        </tr>
+                                    </thead>
+                                    
+                                    <tbody>
+                                        {% for mobilite in mobilites %}
+                                            <tr>
+                                                <td style="cursor: pointer;">{{ mobilite.nomUniversité }}</td>
+                                                <td style="cursor: pointer;"> <a href="{{ mobilite.siteWeb }}" target="_blank">{{ mobilite.siteWeb }} </a></td>
+                                                <td style="cursor: pointer;">{{ mobilite.niveau }}</td>
+                                                <td style="cursor: pointer;">{{ mobilite.specialite }}</td>
+                                                <td style="cursor: pointer;">{{ mobilite.optionn }}</td>
+                                                <td style="cursor: pointer;">{{ mobilite.nbreDePlaceDisponible ?? '--' }}</td> 
+                                                <td>
+                                                    <div>
+                                                        <button class="btn" style="background-color:#21263E; color:white; width:100%; font-family: sans-serif;">S'inscrire</button>
+                                                    </div>
+                                                </td>                                                                                             
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endblock %}
+
+        {% block script %}
+        <script>
+  
+            $(document).ready(function () {
+                
+                $("#multi-filter-select").DataTable({
+                pageLength:5,
+                initComplete: function () {
+                    this.api()
+                    .columns()
+                    .every(function () {
+                        var column = this;
+                        var select = $(
+                        '<select class="form-select"><option value=""></option></select>'
+                        )
+                        .appendTo($(column.footer()).empty())
+                        .on("change", function () {
+                            var val = $.fn.dataTable.util.escapeRegex($(this).val());
+
+                            column
+                            .search(val ? "^" + val + "$" : "", true, false)
+                            .draw();
+                        });
+
+                        column
+                        .data()
+                        .unique()
+                        .sort()
+                        .each(function (d, j) {
+                            select.append(
+                            '<option value="' + d + '">' + d + "</option>"
+                            );
+                        });
+                    });
+                },
+                });
+
+                // Add Row
+                $("#add-row").DataTable({
+                pageLength: 5,
+                });
+
+                var action =
+                '<td> <div class="form-button-action"> <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
+
+                $("#addRowButton").click(function () {
+                $("#add-row")
+                    .dataTable()
+                    .fnAddData([
+                    $("#addName").val(),
+                    $("#addPosition").val(),
+                    $("#addOffice").val(),
+                    action,
+                    ]);
+                $("#addRowModal").modal("hide");
+                });
+            });
+            </script>
+        {% endblock %}
+
+    </div>
+{% endblock %}
