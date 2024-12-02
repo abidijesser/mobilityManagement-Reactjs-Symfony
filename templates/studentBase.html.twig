@@ -102,7 +102,7 @@
                 </a>               
               </li>
 
-              <li class="nav-item">
+              {# <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#sidebarLayouts">
                   <i class="fas fa-th-list"></i>
                   <p>Sidebar Layouts</p>
@@ -208,15 +208,15 @@
                   <p>Widgets</p>
                   <span class="badge badge-success">4</span>
                 </a>
-              </li>
+              </li> #}
               <li class="nav-item">
                 <a href="../../documentation/index.html">
                   <i class="fas fa-file"></i>
-                  <p>Documentation</p>
-                  <span class="badge badge-secondary">1</span>
+                  <p>Mes inscriptions</p>
+                  
                 </a>
               </li>
-              <li class="nav-item">
+              {# <li class="nav-item">
                 <a data-bs-toggle="collapse" href="#submenu">
                   <i class="fas fa-bars"></i>
                   <p>Menu Levels</p>
@@ -266,7 +266,7 @@
                     </li>
                   </ul>
                 </div>
-              </li>
+              </li> #}
             </ul>
           </div>
         </div>
@@ -706,6 +706,8 @@
     <!-- Chart Circle -->
     <script src="{{ asset('/js/plugin/chart-circle/circles.min.js') }}"></script>
 
+    
+
     <!-- Datatables -->
     <script src="{{ asset('/js/plugin/datatables/datatables.min.js') }}"></script>
 
@@ -723,8 +725,8 @@
     <script src="{{ asset('/js/kaiadmin.min.js') }}"></script>
 
     <!-- Kaiadmin DEMO methods, don't include it in your project! -->
-    <script src="{{ asset('/js/setting-demo.js') }}"></script>
-    <script src="{{ asset('/js/demo.js') }}"></script>
+    {# <script src="{{ asset('/js/setting-demo.js') }}"></script>
+    <script src="{{ asset('/js/demo.js') }}"></script> #}
     <script>
       $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
         type: "line",

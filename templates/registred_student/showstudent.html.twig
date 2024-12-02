@@ -1,0 +1,174 @@
+{% extends 'employeBase.html.twig' %}
+
+{% block body %}
+    <div class="page-inner">
+
+        {% block bageHeader %}
+            <div class="page-header">
+
+                <ul class="breadcrumbs mb-3">
+                    <li class="nav-home">
+                        <a href="#">
+                            <i class="icon-home"></i>
+                        </a>
+                    </li>
+
+                    <li class="separator">
+                        <i class="icon-arrow-right"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{  path('app_list_student') }}">Liste des etudiants</a>
+                    </li>
+
+                    <li class="separator">
+                        <i class="icon-arrow-right"></i>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#"> {{student.nomEtudiant | capitalize}} {{student.getPrenomEtudiant() | capitalize}} </a>
+                    </li>
+                </ul>
+            </div>
+        {% endblock %}
+
+        <table class="table table-hover  " style="margin-top:40px; padding-right:10px; border-radius:10px; border-collapse: separate; border-spacing: 0; overflow: hidden;">
+            <tbody>
+
+                <tr>
+                    <th >Nom:</th>
+                    <td>{{ student.nomEtudiant| capitalize }}</td>
+                </tr>
+                <tr>
+                    <th >Prénom:</th>
+                    <td>{{ student.getPrenomEtudiant() | capitalize }}</td>
+                </tr>
+                <tr>
+                    <th >Id Universitaire:</th>
+                    <td>{{ student.idEtudiantUniversitaire }}</td>
+                </tr>
+                <tr>
+                    <th >CIN:</th>
+                    <td>{{ student.cin }}</td>
+                </tr>
+                <tr>
+                    <th >Email Universitaire:</th>
+                    <td>{{ student.emailUniversitaire }}</td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <div class="d-flex ">
+            <!-- Edit button -->
+            <a href="#" class="btn fs-5 w-50" style="background-color: #1a0340;color: white"
+               onclick="openEditModal('{{ student.getIdEtudiant() }}', '{{ student.nomEtudiant }}', '{{ student.getPrenomEtudiant() }}',
+                       '{{ student.idEtudiantUniversitaire }}','{{ student.cin }}','{{ student.emailUniversitaire }}')">Modifier
+            </a>
+
+            <div class="mx-2"></div>
+
+            <button type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                    class=" fs-5 w-50 btn  d-flex justify-content-center align-items-center rounded mr-5"
+                    style="width: 5px; height: 100%;background-color: #ba0606; color:white"
+                    >
+                Supprimer
+            </button>
+
+        </div>
+
+        <form id="updateStudent" action="{{ path('student_update', {'id': student.getIdEtudiant()}) }}" method="POST">
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <!-- Modal content for editing -->
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modifyTitle">Modifier {{ student.nomEtudiant | capitalize }}</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="row">
+
+                                <div class="col">
+                                    <div class="form-group ">
+                                        <label for="nomInput" class="fs-6" style="margin-bottom:1px">Nom</label>
+                                        <input type="text" name="nom" id="nomInput" class="form-control border-primary" placeholder="Nom">
+                                    </div>
+                                </div>
+
+                                <div class="col">
+                                    <div class="form-group ">
+                                        <label for="prenomInput" class="fs-6" style="margin-bottom:1px">Prénom</label>
+                                        <input type="text" name="prenom" id="prenomInput" class="form-control border-primary" placeholder="Prenom">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group mt-1">
+                                <label for="emailInput" class="fs-6" style="margin-bottom:1px">Email Universitaire</label>
+                                <input type="email" name="emailuniversitaire" id="emailInput" class="form-control border-primary"  placeholder="exemple@gmail.com">
+                            </div>
+
+                            <div class="form-group mt-1">
+                                <label for="cinInput" class="fs-6" style="margin-bottom:1px">CIN</label>
+                                <input type="text" name="cin" id="cinInput" class="form-control border-primary"  placeholder="exemple: 12121212">
+                            </div>
+
+                            <div class="form-group mt-1">
+                                <label for="idUniversitaireinput" class="fs-6" style="margin-bottom:1px">Id Universitaire</label>
+                                <input type="text" name="idUniversitaire" id="idUniversitaireinput"  class="form-control border-primary"  placeholder="+216 00 000 000">
+                            </div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn" style="background-color: #f2f2f2; color:#1a0340 " data-bs-dismiss="modal">Fermer</button>
+                            <button type="button" class="btn" onclick="updateStudent()" style="background-color:#1a0340; color: white">Enregistrer les modifications</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #FADBD8 ">
+                        <h5 class="modal-title" id="staticBackdropLabel">Suppression</h5>
+                        <button type="button" class="btn-close " data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        etes vous sûr de supprimer {{student.nomEtudiant | capitalize}} ?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" style="background-color: #f2f2f2; color:#1a0340 " data-bs-dismiss="modal">Annuler</button>
+                        <a href="{{ path('student_delete', {'id': student.getIdEtudiant()}) }}"
+                           style="background-color: #cc0a24; color: white" type="button" class="btn" >Supprimer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function openEditModal(studentId, studentnom, studentprenom, studentemail, studentcin, studentIdUniversitaire) {
+
+                document.getElementById('nomInput').value = studentnom;
+                document.getElementById('prenomInput').value = studentprenom;
+                document.getElementById('emailInput').value = studentemail;
+                document.getElementById('cinInput').value = studentcin;
+                document.getElementById('idUniversitaireinput').value = studentIdUniversitaire;
+
+                var modal = new bootstrap.Modal(document.getElementById('exampleModal'));
+                modal.show();
+            }
+
+            function updateStudent() {
+                // Submit the form
+                document.getElementById('updateStudent').submit();
+            }
+        </script>
+
+        <script src="//code.jquery.com/jquery.js"></script>
+
+    </div>
+{% endblock %}

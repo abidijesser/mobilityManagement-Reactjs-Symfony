@@ -53,14 +53,282 @@
                                         {% for mobilite in mobilites %}
                                             <tr>
                                                 <td style="cursor: pointer;">{{ mobilite.nomUniversité }}</td>
-                                                <td style="cursor: pointer;"> <a href="{{ mobilite.siteWeb }}" target="_blank">{{ mobilite.siteWeb }} </a></td>
+                                                <td style="cursor: pointer"> <a class="text-dark" href="{{ mobilite.siteWeb }}" target="_blank" >{{ mobilite.siteWeb }} </a></td>
                                                 <td style="cursor: pointer;">{{ mobilite.niveau }}</td>
                                                 <td style="cursor: pointer;">{{ mobilite.specialite }}</td>
                                                 <td style="cursor: pointer;">{{ mobilite.optionn }}</td>
                                                 <td style="cursor: pointer;">{{ mobilite.nbreDePlaceDisponible ?? '--' }}</td> 
                                                 <td>
                                                     <div>
-                                                        <button class="btn" style="background-color:#21263E; color:white; width:100%; font-family: sans-serif;">S'inscrire</button>
+                                                        <button type="button" class="btn" 
+                                                            style="background-color:#21263E; color:white; width:100%; font-family: sans-serif;"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#exampleModal"
+                                                            data-bs-whatever="@mdo"
+                                                        > S'inscrire
+                                                        </button>
+
+
+                                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <form>
+
+                                                                                 <div class="row ">
+                                                                                    <div class="col-md-6 mb-4">
+
+                                                                                        <div class="form-outline ">
+                                                                                            <label  class="mb-1" for="niveau">Niveau<span style="color: red;">*</span></label>
+                                                                                            <select
+                                                                                                class="form-select form-control"
+                                                                                                id="niveauSelect"
+                                                                                                name="niveau" >
+                                                                                                <option selected value="">Choisir un niveau</option>
+                                                                                                <option value="4ème">4ème</option>
+                                                                                                <option value="5ème">5ème</option>                                   
+                                                                                            </select>                                         
+                                                                                        </div>
+
+                                                                                        <div id="idError" class="error-container" style="display:none" >
+                                                                                            <div class="icon-container">
+                                                                                                <i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+                                                                                            </div>
+                                                                                            <div class="error-message">Ce champs est requis.</div>
+                                                                                        </div> 
+                                                                                        <div id="idLengthError" class="error-container" style="display:none" >
+                                                                                            <div class="icon-container">
+                                                                                                <i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+                                                                                            </div>
+                                                                                            <div class="error-message">10 chiffres exactement.</div>
+                                                                                        </div> 
+
+                                                                                    </div>
+
+                                                                                    <div class="col-md-6 mb-2 ">
+
+                                                                                        <div class="form-outline">
+                                                                                            <label class="mb-1" for="specialite">Spécialité<span style="color: red;">*</span></label>
+                                                                                            <select
+                                                                                                class="form-select form-control"
+                                                                                                id="specialiteSelect"
+                                                                                                name="specialite"
+                                                                                            >
+                                                                                                <option selected value="">Choisir une spécialité</option>
+                                                                                                <option value="informatique">Informatique</option>
+                                                                                                <option value="genie_civil">Génie civil</option>
+                                                                                                <option value="telecommunications">Télécommunications</option>
+                                                                                                <option value="electromecanique">Electromécanique</option>                                                                        
+                                                                                            </select>                                           
+                                                                                        </div>
+
+                                                                                        <div id="cinError" class="error-container" style="display:none" >
+                                                                                            <div class="icon-container">
+                                                                                                <i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+                                                                                            </div>
+                                                                                            <div class="error-message">Ce champs est requis.</div>
+                                                                                        </div> 
+
+                                                                                        <div id="cinLengthError" class="error-container" style="display:none" >
+                                                                                            <div class="icon-container">
+                                                                                                <i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+                                                                                            </div>
+                                                                                            <div class="error-message">8 chiffres exactement.</div>
+                                                                                        </div> 
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="row ">
+                                                                                    <div class="col-md-6 mb-4">
+
+                                                                                        <div class="form-outline">
+                                                                                            <label class="mb-1" for="optionSelect">Option<span style="color: red;">*</span></label>
+                                                                                            <select class="form-select form-control" id="optionSelect" name="option">
+                                                                                                <option value="" selected>Choisir une option</option>
+                                                                                            </select>
+                                                                                        </div>
+
+                                                                                        <div id="idError" class="error-container" style="display:none" >
+                                                                                            <div class="icon-container">
+                                                                                                <i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+                                                                                            </div>
+                                                                                            <div class="error-message">Ce champs est requis.</div>
+                                                                                        </div> 
+                                                                                        <div id="idLengthError" class="error-container" style="display:none" >
+                                                                                            <div class="icon-container">
+                                                                                                <i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+                                                                                            </div>
+                                                                                            <div class="error-message">10 chiffres exactement.</div>
+                                                                                        </div> 
+
+                                                                                    </div>
+
+                                                                                    <div class="col-md-6 mb-2 ">
+
+                                                                                        <div class="form-outline">
+                                                                                            <label class="mb-1" for="cin">Classe<span style="color: red;">*</span></label>
+                                                                                            <input type="text" id="cin" class="form-control " name="cin">                                            
+                                                                                        </div>
+
+                                                                                        <div id="cinError" class="error-container" style="display:none" >
+                                                                                            <div class="icon-container">
+                                                                                                <i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+                                                                                            </div>
+                                                                                            <div class="error-message">Ce champs est requis.</div>
+                                                                                        </div> 
+
+                                                                                        <div id="cinLengthError" class="error-container" style="display:none" >
+                                                                                            <div class="icon-container">
+                                                                                                <i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+                                                                                            </div>
+                                                                                            <div class="error-message">8 chiffres exactement.</div>
+                                                                                        </div> 
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="row ">
+                                                                                <div class="col-md-6 mb-4">
+
+                                                                                    <div class="form-outline ">
+                                                                                        <label  class="mb-1" for="idUniversitaire">Moyenne<span style="color: red;">*</span></label>
+                                                                                        <input type="text" class="form-control " id="idUniversitaire" name="idUniversitaire" placeholder="exemple: 15.00">                                           
+                                                                                    </div>
+
+                                                                                    <div id="idError" class="error-container" style="display:none" >
+                                                                                        <div class="icon-container">
+                                                                                            <i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+                                                                                        </div>
+                                                                                        <div class="error-message">Ce champs est requis.</div>
+                                                                                    </div> 
+                                                                                    <div id="idLengthError" class="error-container" style="display:none" >
+                                                                                        <div class="icon-container">
+                                                                                            <i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+                                                                                        </div>
+                                                                                        <div class="error-message">10 chiffres exactement.</div>
+                                                                                    </div> 
+
+                                                                                </div>
+
+                                                                                <div class="col-md-6 mb-2 ">
+
+                                                                                    <div class="form-outline">
+                                                                                        <label class="mb-1" for="cin">Langues<span style="color: red;">*</span></label>
+                                                                                        <input type="text" id="cin" class="form-control " name="cin">                                            
+                                                                                    </div>
+
+                                                                                    <div id="cinError" class="error-container" style="display:none" >
+                                                                                        <div class="icon-container">
+                                                                                            <i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+                                                                                        </div>
+                                                                                        <div class="error-message">Ce champs est requis.</div>
+                                                                                    </div> 
+
+                                                                                    <div id="cinLengthError" class="error-container" style="display:none" >
+                                                                                        <div class="icon-container">
+                                                                                            <i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+                                                                                        </div>
+                                                                                        <div class="error-message">8 chiffres exactement.</div>
+                                                                                    </div> 
+
+                                                                                </div>
+                                                                                </div>
+
+                                                                                <div class="row ">
+                                                                                    <div class="col-md-6 mb-4">
+
+                                                                                        <div class="form-outline ">
+                                                                                            <label  class="mb-1" for="idUniversitaire">Activités<span style="color: red;">*</span></label>
+                                                                                            <input type="file" class="form-control " id="idUniversitaire" name="idUniversitaire">                                           
+                                                                                        </div>
+
+                                                                                        <div id="idError" class="error-container" style="display:none" >
+                                                                                            <div class="icon-container">
+                                                                                                <i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+                                                                                            </div>
+                                                                                            <div class="error-message">Ce champs est requis.</div>
+                                                                                        </div> 
+                                                                                        <div id="idLengthError" class="error-container" style="display:none" >
+                                                                                            <div class="icon-container">
+                                                                                                <i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+                                                                                            </div>
+                                                                                            <div class="error-message">10 chiffres exactement.</div>
+                                                                                        </div> 
+
+                                                                                    </div>
+
+                                                                                    <div class="col-md-6 mb-2 ">
+
+                                                                                        <div class="form-outline">
+                                                                                            <label class="mb-1" for="cin">CV</label>
+                                                                                            <input type="file" id="cin" class="form-control " name="cin">                                            
+                                                                                        </div>
+
+                                                                                        <div id="cinError" class="error-container" style="display:none" >
+                                                                                            <div class="icon-container">
+                                                                                                <i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+                                                                                            </div>
+                                                                                            <div class="error-message">Ce champs est requis.</div>
+                                                                                        </div> 
+
+                                                                                        <div id="cinLengthError" class="error-container" style="display:none" >
+                                                                                            <div class="icon-container">
+                                                                                                <i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+                                                                                            </div>
+                                                                                            <div class="error-message">8 chiffres exactement.</div>
+                                                                                        </div> 
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                 <div class="row ">
+                                                                                    <div class=" mb-4">
+
+                                                                                        <div class="form-outline ">
+                                                                                            <label  class="mb-1" for="idUniversitaire">Certificats<span style="color: red;">*</span></label>
+                                                                                            <input type="file" class="form-control " id="idUniversitaire" name="idUniversitaire">                                           
+                                                                                        </div>
+
+                                                                                        <div id="idError" class="error-container" style="display:none" >
+                                                                                            <div class="icon-container">
+                                                                                                <i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+                                                                                            </div>
+                                                                                            <div class="error-message">Ce champs est requis.</div>
+                                                                                        </div> 
+                                                                                        <div id="idLengthError" class="error-container" style="display:none" >
+                                                                                            <div class="icon-container">
+                                                                                                <i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+                                                                                            </div>
+                                                                                            <div class="error-message">10 chiffres exactement.</div>
+                                                                                        </div> 
+
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                            </form>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn" 
+                                                                            data-bs-dismiss="modal"
+                                                                            style="background-color:#E8E8E8; color:#21263E; width:30%; font-family: sans-serif;"
+                                                                            >Close</button>
+
+                                                                            <button type="button" class="btn" 
+                                                                            style="background-color:#21263E; color:white; width:30%; font-family: sans-serif;"
+                                                                            >S'inscrire</button>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
                                                     </div>
                                                 </td>                                                                                             
                                             </tr>
@@ -76,63 +344,36 @@
         {% endblock %}
 
         {% block script %}
-        <script>
-  
-            $(document).ready(function () {
-                
-                $("#multi-filter-select").DataTable({
-                pageLength:5,
-                initComplete: function () {
-                    this.api()
-                    .columns()
-                    .every(function () {
-                        var column = this;
-                        var select = $(
-                        '<select class="form-select"><option value=""></option></select>'
-                        )
-                        .appendTo($(column.footer()).empty())
-                        .on("change", function () {
-                            var val = $.fn.dataTable.util.escapeRegex($(this).val());
+            <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const specialiteSelect = document.getElementById('specialiteSelect');
+            const optionSelect = document.getElementById('optionSelect');
 
-                            column
-                            .search(val ? "^" + val + "$" : "", true, false)
-                            .draw();
-                        });
+            const options = {
+                informatique: ['ARTIC', 'DS', 'ERP-BI', 'SIM', 'SAE', 'GAMIX', 'INFINI', 'NIDS', 'TWIN', 'SE', 'SLEAM'],
+                genie_civil: ['Ressources naturelles et études énergétiques', 'Ponts et chaussées', 'Structures et ouvrages'],
+                telecommunications: ['IoSyS', 'WIN'],
+                electromecanique: ['Mécatronique', 'OGI'],
+            };
 
-                        column
-                        .data()
-                        .unique()
-                        .sort()
-                        .each(function (d, j) {
-                            select.append(
-                            '<option value="' + d + '">' + d + "</option>"
-                            );
-                        });
-                    });
-                },
-                });
+            specialiteSelect.addEventListener('change', function () {
+                const selectedSpecialite = this.value;
+                const correspondingOptions = options[selectedSpecialite] || [];
 
-                // Add Row
-                $("#add-row").DataTable({
-                pageLength: 5,
-                });
+                // Clear the options in optionSelect
+                optionSelect.innerHTML = '<option value="" selected>Choisir une option</option>';
 
-                var action =
-                '<td> <div class="form-button-action"> <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-primary btn-lg" data-original-title="Edit Task"> <i class="fa fa-edit"></i> </button> <button type="button" data-bs-toggle="tooltip" title="" class="btn btn-link btn-danger" data-original-title="Remove"> <i class="fa fa-times"></i> </button> </div> </td>';
-
-                $("#addRowButton").click(function () {
-                $("#add-row")
-                    .dataTable()
-                    .fnAddData([
-                    $("#addName").val(),
-                    $("#addPosition").val(),
-                    $("#addOffice").val(),
-                    action,
-                    ]);
-                $("#addRowModal").modal("hide");
+                // Populate the optionSelect with corresponding options
+                correspondingOptions.forEach(function (option) {
+                    const newOption = document.createElement('option');
+                    newOption.value = option;
+                    newOption.textContent = option;
+                    optionSelect.appendChild(newOption);
                 });
             });
-            </script>
+        });
+    </script>
+
         {% endblock %}
 
     </div>

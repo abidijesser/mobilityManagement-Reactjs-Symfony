@@ -1,31 +1,299 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Hello EmployeController!{% endblock %}
+{% extends 'employeBase.html.twig' %}
 
 {% block body %}
+    <div class="page-inner">
 
-    <form action="{{ path('add_employe')}}" method="POST" >
-        <div class="mb-3">
-        <label for="nom" class="form-label">Nom</label>
-        <input type="text" class="form-control" name="nom" id="nom" placeholder="votre nom">
-        </div>
+        {% block bageHeader %}
+            <div class="page-header">
+                <h3 class="fw-bold mb-3">Employés</h3>
+                <ul class="breadcrumbs mb-3">
+                    <li class="nav-home">
+                        <a href="#">
+                            <i class="icon-home"></i>
+                        </a>
+                    </li>
+                    <li class="separator">
+                        <i class="icon-arrow-right"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Employés</a>
+                    </li>
+                    <li class="separator">
+                        <i class="icon-arrow-right"></i>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#">Ajouter employé</a>
+                    </li>
+                </ul>
+            </div>
+        {% endblock %}
 
-        <div class="mb-3">
-        <label for="prenom" class="form-label">Prenom</label>
-        <input type="text" class="form-control" name="prenom" id="prenom" placeholder="votre prenom">
-        </div>
+        {% block form %}
+            <form id="myForm" action="{{ path('add_mobilite') }}" method="post">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="card-title">Ajouter employé</div>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
 
-        <div class="mb-3">
-        <label for="email" class="form-label">Email</label>
-        <input type="text" class="form-control" name="email" id="email" placeholder="votre email">
-        </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
 
-        <div class="mb-3">
-        <label for="motdepasse" class="form-label">Mot de passe</label>
-        <input type="text" class="form-control" name="motdepasse" id="motdepasse" placeholder="votre mot de passe">
-        </div>
+                                            <label for="nomEcole">Nom  <span style="color: red;">*</span></label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="nomEcole"
+                                                name="nomEcole"
+                                                placeholder="Entrer nom "
+                                            />   
 
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+                                            <div id="nameError" class="error-container" style="display:none">
+												<div class="icon-container">
+													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+												</div>
+												<div class="error-message">Ce champs est requis.</div>
+											</div>  
+
+                                            <div id="nameLengthError" class="error-container" style="display:none">
+												<div class="icon-container">
+													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+												</div>
+												<div class="error-message">3 caracteres au minimum.</div>
+											</div> 
+                                                                                 
+                                        </div>									
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+
+                                            <label for="siteWeb">Prénom <span style="color: red;">*</span></label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="siteWeb"
+                                                name="siteWeb"
+                                                placeholder="Entrer prénom"
+                                            />
+                                            <div id="sitewebError" class="error-container" style="display:none">
+												<div class="icon-container">
+													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+												</div>
+												<div class="error-message">Ce champs est requis.</div>
+											</div>  
+
+                                            <div id="regexError" class="error-container" style="display:none">
+												<div class="icon-container">
+													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+												</div>
+												<div class="error-message">URL invalide.</div>
+											</div> 
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+
+                                            <label for="siteWeb">Email <span style="color: red;">*</span></label>
+                                            <input
+                                                type="text"
+                                                class="form-control"
+                                                id="siteWeb"
+                                                name="siteWeb"
+                                                placeholder="email@exemple.com"
+                                            />
+                                            <div id="sitewebError" class="error-container" style="display:none">
+												<div class="icon-container">
+													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+												</div>
+												<div class="error-message">Ce champs est requis.</div>
+											</div>  
+
+                                            <div id="regexError" class="error-container" style="display:none">
+												<div class="icon-container">
+													<i class="fas fa-exclamation fa-xs" style="color: red;"></i>
+												</div>
+												<div class="error-message">URL invalide.</div>
+											</div> 
+
+                                        </div>
+                                    </div>
+
+                                    
+
+                                </div>
+                            </div>
+                            <div class="card-action mt-3 ">
+                                <button class="btn w-25" style="background-color:#21263E; color:white;">Ajouter</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        {% endblock %}
+        
+    </div>
+
+    {% block style %}
+        <style>
+            .icon-container {
+                margin-left:3px;
+                margin-right: 5px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }		
+
+            .error-container {
+                margin-top:3px;
+                display: flex;
+                align-items: center;
+                background-color:#FFDEDE;
+            }		
+
+            .error-message {
+                color: red;
+                font-size: 12px;
+                margin-left: 2px;
+            }		
+
+            .form-control.error-border {
+                border: 1px solid red;
+            }
+
+        </style>
+    {% endblock %}
+
+    
+
+    {% block formScript %}
+        <script>
+            document.getElementById('myForm').addEventListener('submit', function(event) {
+                let isValid = true;
+             
+                const nomEcole = document.getElementById('nomEcole');
+                const nameError = document.getElementById('nameError');
+                const nameLengthError = document.getElementById('nameLengthError');
+
+                if (nomEcole.value.trim() === '') {
+                    nameError.style.display = 'flex';      
+                    nameLengthError.style.display = 'none';   
+                    nomEcole.classList.add('error-border');           
+                    isValid = false;
+                } else if ( nomEcole.value.trim().length < 3) {
+                    nameLengthError.style.display = 'flex';
+                    nameError.style.display = 'none';
+                    nomEcole.classList.add('error-border');
+                    isValid = false;
+                } else {
+                    nameLengthError.style.display = 'none';
+                    nameError.style.display = 'none';
+                    nomEcole.classList.remove('error-border');
+                }
+                
+                const siteWeb = document.getElementById('siteWeb');
+                const sitewebError = document.getElementById('sitewebError');
+                const regexError = document.getElementById('regexError');
+                const urlRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]{2,4}(\/\S*)?$/;
+
+                if (siteWeb.value.trim() === '') {
+                    sitewebError.style.display = 'flex';
+                    regexError.style.display = 'none';
+                    siteWeb.classList.add('error-border');
+                    isValid = false;
+                } else if (!urlRegex.test(siteWeb.value.trim())) {
+                    sitewebError.style.display = 'none';
+                    regexError.style.display = 'flex';
+                    siteWeb.classList.add('error-border');
+                    isValid = false;
+                } else {
+                    regexError.style.display = 'none';
+                    sitewebError.style.display = 'none';
+                    siteWeb.classList.remove('error-border');
+                }
+
+                const niveauSelect = document.getElementById('niveauSelect');
+                const niveauError = document.getElementById('niveauError');
+
+                if (niveauSelect.value === '') {
+                    niveauError.style.display = 'flex';
+                    niveauSelect.classList.add('error-border');
+                    isValid = false;
+                } else {
+                    niveauError.style.display = 'none';
+                    niveauSelect.classList.remove('error-border');
+                }
+
+                const specialiteSelect = document.getElementById('specialiteSelect');
+                const specialiteError = document.getElementById('specialiteError');
+
+                if (specialiteSelect.value === '') {
+                    specialiteError.style.display = 'flex';
+                    specialiteSelect.classList.add('error-border');
+                    isValid = false;
+                } else {
+                    specialiteError.style.display = 'none';
+                    specialiteSelect.classList.remove('error-border');
+                }
+
+                const optionSelect = document.getElementById('optionSelect');
+                const optionError = document.getElementById('optionError');
+
+                if (optionSelect.value === '') {
+                    optionError.style.display = 'flex';
+                    optionSelect.classList.add('error-border');
+                    isValid = false;
+                } else {
+                    optionError.style.display = 'none';
+                    optionSelect.classList.remove('error-border');
+                }
+
+                const nbrePlace = document.getElementById('nbrePlace');
+                const nbrePlaceError = document.getElementById('nbrePlaceError');
+
+                if (nbrePlace.value !== '' && isNaN(nbrePlace.value)) {
+                    nbrePlaceError.style.display = 'flex';
+                    nbrePlace.classList.add('error-border');
+                    isValid = false;
+                } else {
+                    nbrePlaceError.style.display = 'none';
+                    nbrePlace.classList.remove('error-border');
+                }
+
+                if (!isValid) {
+                    event.preventDefault();
+                }
+            });
+
+            const specialiteSelect = document.getElementById('specialiteSelect');
+            const optionSelect = document.getElementById('optionSelect');
+
+            const options = {
+                informatique: ['ARTIC', 'DS', 'ERP-BI', 'SIM', 'SAE', 'GAMIX', 'INFINI', 'NIDS', 'TWIN', 'SE', 'SLEAM'],
+                genie_civil: ['Ressources naturelles et études énergétiques', 'Ponts et chaussées', 'Structures et ouvrages'],
+                telecommunications: ['IoSyS', 'WIN'],
+                electromecanique: ['Mécatronique', 'OGI'],
+            };
+
+            specialiteSelect.addEventListener('change', function() {
+                const selectedSpecialite = this.value;
+                const correspondingOptions = options[selectedSpecialite] || [];
+
+                optionSelect.innerHTML = '<option value="" selected>Choisir une option</option>';
+
+                correspondingOptions.forEach(function(option) {
+                    const newOption = document.createElement('option');
+                    newOption.value = option;
+                    newOption.textContent = option;
+                    optionSelect.appendChild(newOption);
+                });
+            });
+        </script>
+    {% endblock %}
 
 {% endblock %}

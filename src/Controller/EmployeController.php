@@ -13,7 +13,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class EmployeController extends AbstractController
 {
-    #[Route('/employe', name: 'app_employe')]
+    #[Route('/dashboard/employe', name: 'app_employe')]
     public function employe(): Response
     {
         return $this->render('employe/index.html.twig');
